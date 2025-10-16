@@ -1,0 +1,42 @@
+
+/* Bootstrap Grid sistemine daha iyi uyması için CSS'i biraz güncelleyelim */
+.home {
+  padding-bottom: 40px;
+}
+.product-grid {
+  display: grid;
+  /* Bootstrap'ın grid yapısını taklit edebilir veya saf CSS grid kullanabilirsiniz */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+.product-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.product-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+.product-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4; /* Ürün görselleri için Beymen tarzı dikey oran */
+  object-fit: cover;
+  border-radius: 4px;
+}
+.product-card h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 10px 0 5px;
+  text-transform: uppercase;
+}
+.product-card p {
+  font-weight: 700;
+  color: #1c1c1c;
+  font-size: 1.1rem;
+}
