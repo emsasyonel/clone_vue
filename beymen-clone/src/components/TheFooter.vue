@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-dark text-white pt-5 pb-4">
-    <b-container>
+    <b-container-fluid>
       <b-row>
         <b-col md="3" sm="6" class="mb-4">
           <h5>KURUMSAL</h5>
@@ -40,6 +40,6 @@
           &copy; {{ new Date().getFullYear() }} Beymen Klonu. Tüm Hakları Saklıdır.
         </b-col>
       </b-row>
-    </b-container>
+    </b-container-fluid>
   </footer>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <b-container>
+    <b-container-fluid>
       <h2>Yeni Ürünler</h2>
 
       <div v-if="shopifyStore.loading" class="text-center my-5">
@@ -21,7 +21,7 @@
           <b-button variant="dark" size="sm" class="mt-2">İncele</b-button>
         </div>
       </div>
-    </b-container>
+    </b-container-fluid>
   </div>
 </template>
 

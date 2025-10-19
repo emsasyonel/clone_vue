@@ -1,14 +1,12 @@
-<template>
+<<template>
   <div> 
-    
     <TheHeader /> 
     
-    <main class="container my-4"> 
+    <main class="my-4"> 
       <router-view /> 
     </main>
     
     <TheFooter />
-    
   </div>
 </template>
 <script setup>
