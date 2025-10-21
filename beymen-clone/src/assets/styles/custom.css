@@ -1,4 +1,9 @@
-
+.category-bar .nav {
+    width: 100% !important;
+    display: flex !important; 
+    /* 'justify-content-between' zaten HTML'den geliyor ama garanti olsun diye ekleyebiliriz */
+    justify-content: space-between !important;
+}
 /* Bootstrap Grid sistemine daha iyi uyması için CSS'i biraz güncelleyelim */
 .home {
   padding-bottom: 40px;

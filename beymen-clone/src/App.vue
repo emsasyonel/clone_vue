@@ -1,4 +1,4 @@
-<<template>
+<template>
   <div> 
     <TheHeader /> 
     
@@ -15,13 +15,3 @@ import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 </script>
 
-<style>
-/* Global CSS aynı kalır */
-body {
-  font-family: sans-serif;
-  background-color: #f8f9fa; 
-}
-a {
-  text-decoration: none; 
-}
-</style>

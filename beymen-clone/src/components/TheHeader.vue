@@ -14,7 +14,7 @@
     </b-navbar>
     <hr>
     <b-navbar type="light" variant="white" class="main-bar py-4">
-      <b-container-fluid class="d-flex align-items-center px-5">
+      <b-container-fluid class="d-flex align-items-center">
         
         <b-navbar-brand :to="{ name: 'Home' }" class="text-dark logo-text">
           BEYMEN <span class="dot">.COM</span>
@@ -45,15 +45,18 @@
         </b-navbar-nav>
       </b-container-fluid>
     </b-navbar>
-    <hr>
-    <b-container-fluid class="d-none d-lg-block">
-      <b-nav class="justify-content-center">
-        <b-nav-item v-for="cat in categories" :key="cat" :to="{ name: 'Category', params: { slug: cat.toLowerCase() } }" class="category-link">
-          {{ cat }}
-        </b-nav-item>
-      </b-nav>
-    </b-container-fluid>
-  </header>
+<hr>
+<div class="category-bar d-none d-lg-block"> 
+    <b-container-fluid>
+                <b-nav class="d-flex w-100 justify-content-between">
+            <b-nav-item v-for="cat in categories" :key="cat" :to="{ name: 'Category', params: { slug: cat.toLowerCase() } }" class="category-link">
+                {{ cat }}
+            </b-nav-item>
+        </b-nav>
+    </b-container-fluid>
+</div>
+</header>
+
 </template>
 
 <script setup>
@@ -67,6 +70,8 @@ const categories = ref([
     'Kadın', 'Erkek', 'Kozmetik/BBS', 'Ev & Yaşam', 'Çocuk', 
     'Anne & Bebek & Oyuncak', 'Teknoloji', 'Spor & Outdoor', 'Outlet', 'Reborn'
 ]);
+
+
 </script>
 
 <style scoped>
@@ -74,41 +79,39 @@ const categories = ref([
 header.sticky-top {
     z-index: 1020; 
     background-color: white;
-    /* width: 100% burada örtülü olarak zaten vardır */
 }
 
 /* TÜM HEADER ÇUBUKLARI İÇİN ZORLAMA KURALI */
-/* Bu kural, çubukların TAM KENARA yayılmasını sağlar (Eski b-navbar/b-container-fluid sorununu çözer) */
 .top-bar, .main-bar, .category-bar {
     width: 100%; 
-    /* Bootstrap'ın varsayılan boşluklarını SIFIRA ÇEKER */
     margin-left: 0 !important; 
     margin-right: 0 !important;
     padding-left: 0 !important; 
     padding-right: 0 !important;
 }
 
-/* src/components/layout/TheHeader.vue'daki STYLE KISMI */
+/* HATA DÜZELTMESİ: .w-100 kuralı buradan silindi, 
+  çünkü 'scoped' içindeyken alt bileşenlerde çalışmaz.
+*/
 
 /* Arama Placeholder'ı */
 .search-placeholder {
-    max-width: 500px; /* Genişliği Beymen'e benzer şekilde kısıtladık */
+    max-width: 500px;
     width: 100%;
     padding: 0 20px;
 }
 
 .search-placeholder .search-input-group {
-    /* Placeholder metnini ve ikonu yan yana, kutunun içinde ortalamak için */
     border: 1px solid #ccc;
-    padding: 10px 15px; /* Kutuya iç boşluk veriyoruz */
-    height: 40px; /* Yüksekliği sabitliyoruz */
+    padding: 10px 15px;
+    height: 40px;
     display: flex;
-    align-items: center; /* Dikeyde ortalama */
-    justify-content: space-between; /* İkon ve metni kenarlara ayırma */
+    align-items: center;
+    justify-content: space-between;
     cursor: text;
 }
 .search-placeholder .placeholder-text {
-    color: #999; /* Yer tutucu rengi */
+    color: #999;
     font-size: 0.9rem;
     line-height: 1;
 }
@@ -118,7 +121,6 @@ header.sticky-top {
     border-bottom: 1px solid #eee;
 }
 .top-bar .container-fluid {
-    /* İçeriklerin kenarlardan ne kadar içeride duracağını burada belirliyoruz */
     padding-left: 30px !important; 
     padding-right: 30px !important;
 }
@@ -136,7 +138,6 @@ header.sticky-top {
     padding-bottom: 1.5rem !important;
 }
 .main-bar .container-fluid {
-    /* İçerik padding'i, üst şeritle aynı hizada */
     padding-left: 30px !important; 
     padding-right: 30px !important;
 }
@@ -149,7 +150,6 @@ header.sticky-top {
     color: #40579e; 
     font-weight: 700;
 }
-/* Arama Çubuğu */
 .search-container {
     max-width: 500px;
     padding: 0 20px;
@@ -166,7 +166,6 @@ header.sticky-top {
     color: #333 !important;
     padding: 0.5rem 1rem;
 }
-/* İkon Grubu */
 .icon-group .icon-item {
     margin-left: 1rem;
     padding: 0 !important;
@@ -183,33 +182,50 @@ header.sticky-top {
 
 /* --- 3. KATEGORİ ŞERİDİ STİLİ (.category-bar) --- */
 .category-bar {
-/* Beymen'in altında ince bir çizgi vardır, b-navbar'dan border-bottom'ı koruyoruz */
     border-bottom: 1px solid #ccc;
-    /* Dikey boşlukları azaltıyoruz */
-    padding-top: 0.3rem !important; 
-    padding-bottom: 0.3rem !important;
-    background-color: white; /* Arka planı garanti altına alalım */
+    padding-top: 0px !important; 
+    padding-bottom: 0px !important;
+    background-color: white;
+    
+    /* ZORLAMA: Header'daki tüm çubuklara uygulanan genel zorlamayı buraya da uygular */
+    width: 100%; 
+    margin-left: 0 !important; 
+    margin-right: 0 !important;
+    /* HATA DÜZELTMESİ: Fazladan '}' parantezi buradan silindi. */
 }
+
 .category-bar .container-fluid {
-/* İçeriği kenarlara daha yakın tutalım (Header'ın geri kalanıyla aynı 30px boşluk) */
     padding-left: 30px !important; 
     padding-right: 30px !important;
 }
+
 .category-link {
-color: #1c1c1c !important;
+    margin: 0 !important; 
+    padding: 0px 0px !important;
+    color: #1c1c1c !important;
     font-size: 0.85rem;
     font-weight: 500;
     text-transform: uppercase;
-    /* Linkler arasındaki boşluğu azaltıp daha kompakt hale getiriyoruz */
-    padding: 0.4rem 0.8rem !important; 
-    margin: 0 0.5rem; /* Yanlara biraz marjin ekleyelim */
     
-    /* Hover Efekti: Alt çizgi ekleme */
+    margin: 0 !important; 
+    padding: 0px 0px !important; 
+    
     border-bottom: 2px solid transparent;
     transition: border-bottom 0.2s ease-in-out;
+    flex-grow: 0;
 }
 .category-link:hover {
-    color: #1c1c1c !important; /* Renk değişmesin */
-    border-bottom: 2px solid #1c1c1c; /* Siyah alt çizgi */
+    color: #1c1c1c !important; 
+    border-bottom: 2px solid #1c1c1c;
+}
+
+/* --- ÇÖZÜM 1 KURALI BURADA --- */
+/* :deep() seçicisi, bu kuralın <b-nav> bileşeninin içine işlemesini sağlar */
+:deep(.category-nav-list) {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    margin: 0;
+    padding: 0;
 }
 </style>

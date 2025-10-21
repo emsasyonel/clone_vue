@@ -20,3 +20,10 @@ html, body {
   max-width: none;
   min-width: 100%;
 }
+body {
+  font-family: sans-serif;
+  background-color: #f8f9fa; 
+}
+a {
+  text-decoration: none; 
+}
