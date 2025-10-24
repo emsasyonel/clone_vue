@@ -1,17 +1,15 @@
 <template>
-  <div> 
-    <TheHeader /> 
-    
-    <main class="my-4"> 
-      <router-view /> 
-    </main>
-    
-    <TheFooter />
-  </div>
+  <TheHeader />
+
+  <main>
+    <router-view />
+  </main>
+
+  <TheFooter />
 </template>
+
 <script setup>
-// layout klasörüne koyduğunuzu varsayarak içe aktarıyoruz
-import TheHeader from './components/TheHeader.vue'; 
+// import { BApp } from 'bootstrap-vue-next' // Kaldırıldı
+import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 </script>
-
