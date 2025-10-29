@@ -33,7 +33,7 @@
           <i class="bi bi-person h5 mb-1"></i>
           <span class="d-block icon-text">Hesabım</span>
         </BNavItem>
-        <BNavItem class="text-center icon-item">
+        <BNavItem :to="{ name: 'Favorites' }" class="nav-link text-center icon-item p-0">
           <i class="bi bi-heart h5 mb-1"></i>
           <span class="d-block icon-text">Favorilerim</span>
         </BNavItem>

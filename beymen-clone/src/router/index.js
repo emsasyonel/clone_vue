@@ -6,7 +6,8 @@ import Product from '@/views/Product.vue'
 import Cart from '@/views/Cart.vue'
 import Category from '@/views/Category.vue'
 import Login from '@/views/Login.vue'
-import Register from '@/views/Register.vue' // <-- YENİ İMPORT EKLENDİ
+import Register from '@/views/Register.vue'
+import Favorites from '@/views/Favorites.vue' // <-- YENİ İMPORT EKLENDİ
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -22,11 +23,16 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  // --- YENİ ÜYELİK SAYFASI ROTASI EKLENDİ ---
   {
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  // --- YENİ FAVORİLER SAYFASI ROTASI EKLENDİ ---
+  {
+    path: '/favorites',
+    name: 'Favorites',
+    component: Favorites
   }
   // ------------------------------------
 ]
