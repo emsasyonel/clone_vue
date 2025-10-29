@@ -61,15 +61,22 @@
             The One Card'ınızı kayıt edebilir ve puanlarınızı kullanabilirsiniz.
           </li>
         </ul>
-        <BButton variant="outline-dark" class="w-100 py-2">ÜYE OL</BButton>
-      </BCol>
+        
+        <BButton 
+          variant="outline-dark" 
+          class="w-100 py-2" 
+          :to="{ name: 'Register' }"
+        >
+          ÜYE OL
+        </BButton>
 
+      </BCol>
     </BRow>
   </BContainer>
 </template>
 
 <script setup>
-// Gerekli importları yapıyoruz
+// Gerekli importları yapıyoruz (Değişiklik yok)
 import {
   BContainer,
   BRow,
@@ -83,5 +90,5 @@ import {
 </script>
 
 <style scoped>
-/* Stiller... */
+/* Stiller... (Değişiklik yok) */
 </style>
