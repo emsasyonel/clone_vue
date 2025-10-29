@@ -15,17 +15,21 @@
     <hr class="m-0">
 
     <BContainer fluid class="main-bar py-4 d-flex align-items-center justify-content-between" style="padding-left: 50px; padding-right: 50px;">
+
       <BNavbarBrand :to="{ name: 'Home' }" class="text-dark logo-text" style="flex-shrink: 0; padding-left: 50px;">
         BEYMEN <span class="dot">.COM</span>
       </BNavbarBrand>
+
       <div class="search-placeholder w-100 mx-4 d-none d-lg-block">
         <div class="search-input-group">
           <div class="placeholder-text">Ürün, Marka Arayın...</div>
           <i class="bi bi-search text-dark ms-2"></i>
         </div>
       </div>
+
       <BNav class="icon-group d-flex flex-row align-items-center" style="flex-shrink: 0; padding-right: 50px;">
-        <BNavItem class="text-center icon-item">
+
+        <BNavItem :to="{ name: 'Login' }" class="nav-link text-center icon-item p-0">
           <i class="bi bi-person h5 mb-1"></i>
           <span class="d-block icon-text">Hesabım</span>
         </BNavItem>
@@ -33,6 +37,7 @@
           <i class="bi bi-heart h5 mb-1"></i>
           <span class="d-block icon-text">Favorilerim</span>
         </BNavItem>
+
         <BNavItem :to="{ name: 'Cart' }" class="nav-link text-center icon-item p-0 position-relative">
           <i class="bi bi-bag h5 mb-1"></i>
           <span class="d-block icon-text">Sepetim</span>
@@ -41,6 +46,7 @@
           </BBadge>
         </BNavItem>
       </BNav>
+
     </BContainer>
 
     <hr class="m-0">
@@ -77,7 +83,6 @@
       >
         <BContainer fluid class="py-4" style="padding-left: 50px; padding-right: 50px;">
           <BRow class="gx-5" v-if="currentContentData">
-
             <BCol lg="2" class="mega-menu-side">
               <ul class="list-unstyled mb-0">
                 <li
@@ -94,7 +99,6 @@
                 </li>
               </ul>
             </BCol>
-
             <BCol :lg="currentContentData.promos?.length > 0 ? 7 : 9">
               <BRow>
                 <BCol
@@ -113,7 +117,6 @@
                 </BCol>
               </BRow>
             </BCol>
-
             <BCol :lg="3" v-if="currentContentData.promos?.length > 0">
               <div v-for="(promo, index) in currentContentData.promos" :key="index" class="mb-3 promo-item">
                 <a :href="promo.link">
@@ -122,13 +125,11 @@
                 </a>
               </div>
             </BCol>
-
           </BRow>
         </BContainer>
       </div>
 
     </div>
-
   </header>
 </template>
 
@@ -143,6 +144,7 @@ import {
   BBadge,
   BRow,
   BCol
+  // ===== DEĞİŞİKLİK BURADA: BDropdown ve BDropdownItem kaldırıldı =====
 } from 'bootstrap-vue-next'
 
 const cartStore = useShopifyStore();
@@ -152,27 +154,20 @@ const categories = ref([
     'Anne & Bebek & Oyuncak', 'Teknoloji', 'Spor & Outdoor', 'Outlet', 'Reborn'
 ]);
 
-// --- DEĞİŞİKLİK: MEGA MENÜ VERİ YAPISI ---
-// Veri yapısı, Beymen'deki gibi iç içe (nested) hale getirildi.
-// Artık 'sideLinks' ve 'columns' kardeş değil.
-// 'sideLinks' (örn: 'Giyim', 'Ayakkabı') anahtar (key) haline geldi.
-// 'columns' ve 'promos' bu anahtarların *içine* yerleştirildi.
+// --- MEGA MENÜ VERİ YAPISI (Değişiklik yok) ---
 const megaMenuData = ref({
   'Kadın': {
-    // Sol menüdeki 'Giyim' linki için içerik
     'Giyim': {
       columns: [ { title: 'Elbise', links: [ { text: 'Siyah Elbise', link: '#' }, { text: 'Jean Elbise', link: '#' }, { text: 'Tulum', link: '#' }, { text: 'Abiye Elbise', link: '#' }, { text: 'Tüm Elbise ►', link: '#' } ] }, { title: 'Triko & Kazak', links: [ { text: 'Kazak', link: '#' }, { text: 'Süveter', link: '#' }, { text: 'Tüm Triko & Kazak ►', link: '#' } ] }, { title: 'Dış Giyim', links: [ { text: 'Mont', link: '#' }, { text: 'Kaban', link: '#' }, { text: 'Palto', link: '#' }, { text: 'Pardösü', link: '#' }, { text: 'Yağmurluk', link: '#' }, { text: 'Tüm Dış Giyim ►', link: '#' } ] }, { title: 'Pantolon', links: [ { text: 'Tayt & Legging', link: '#' }, { text: 'Spor Pantolon', link: '#' }, { text: 'Tüm Pantolon ►', link: '#' } ] }, { title: 'Etek', links: [ { text: 'Deri Etek', link: '#' }, { text: 'Abiye Etek', link: '#' }, { text: 'Tüm Etek ►', link: '#' } ] }, { title: 'Takım', links: [ { text: 'Takım', link: '#' } ] }, { title: 'Sweatshirt', links: [ { text: 'Sweatshirt', link: '#' } ] }, { title: 'Gömlek & Bluz', links: [ { text: 'Bluz', link: '#' }, { text: 'Büstiyer', link: '#' }, { text: 'Jean Gömlek', link: '#' }, { text: 'Tüm Gömlek & Bluz ►', link: '#' } ] }, { title: 'Ceket', links: [ { text: 'Blazer', link: '#' }, { text: 'Klasik Ceket', link: '#' }, { text: 'Tüm Ceket ►', link: '#' } ] }, { title: 'T-Shirt', links: [ { text: 'T-Shirt', link: '#' } ] }, { title: 'Jean Pantolon', links: [ { text: 'Yelek', link: '#' }, { text: 'Jean Pantolon', link: '#' } ] }, ],
       promos: [ { img: 'https://picsum.photos/200/100?image=101', title: 'Tüm Giyim Ürünleri', link: '#' }, { img: 'https://picsum.photos/200/100?image=102', title: 'Giyim Yeni Gelenler', link: '#' }, { img: 'https://picsum.photos/200/100?image=103', title: 'Giyim İndirimleri', link: '#' }, ]
     },
-    // Sol menüdeki 'Ayakkabı' linki için içerik (Örnek olarak eklendi)
     'Ayakkabı': {
       columns: [ { title: 'Sneaker', links: [ {text: 'Tüm Sneakerlar', link: '#'}, {text: 'Beyaz Sneaker', link: '#'} ] }, { title: 'Bot', links: [ {text: 'Deri Bot', link: '#'}, {text: 'Yağmur Çizmesi', link: '#'} ] }, { title: 'Topuklu Ayakkabı', links: [ {text: 'Stiletto', link: '#'}, {text: 'Platform', link: '#'} ] } ],
       promos: [ { img: 'https://picsum.photos/200/100?image=104', title: 'Ayakkabı Yeni Sezon', link: '#' } ]
     },
-    // Sol menüdeki 'Çanta' linki için içerik (Örnek olarak eklendi)
     'Çanta': {
       columns: [ { title: 'Omuz Çantası', links: [ {text: 'Tüm Omuz Çantaları', link: '#'} ] }, { title: 'Sırt Çantası', links: [ {text: 'Deri Sırt Çantası', link: '#'} ] } ],
-      promos: [] // Promo görseli yoksa boş dizi
+      promos: []
     },
     'Aksesuar': { columns: [ { title: 'Takı', links: [ {text: 'Kolye', link: '#'} ] } ], promos: [] },
     'Reborn - Lüks İkinci El': { columns: [ { title: 'Lüks Çanta', links: [ {text: 'Tüm Çantalar', link: '#'} ] } ], promos: [] },
@@ -180,12 +175,10 @@ const megaMenuData = ref({
     'Öne Çıkan Markalar': { columns: [ { title: 'Markalar', links: [ {text: 'Gucci', link: '#'}, {text: 'Prada', link: '#'} ] } ], promos: [] },
   },
   'Erkek': {
-    // Sol menüdeki 'Erkek Giyim' linki için içerik
     'Erkek Giyim': {
       columns: [ { title: 'T-Shirt', links: [ {text: 'Polo Yaka', link:'#'}, {text: 'Basic', link:'#'}, {text: 'Tüm T-Shirt ►', link: '#'} ] }, { title: 'Gömlek', links: [ {text: 'Klasik Gömlek', link:'#'}, {text: 'Spor Gömlek', link:'#'}, {text: 'Tüm Gömlek ►', link: '#'} ] }, { title: 'Pantolon', links: [ {text: 'Jean Pantolon', link:'#'}, {text: 'Spor Pantolon', link:'#'}, {text: 'Tüm Pantolon ►', link: '#'} ] }, { title: 'Dış Giyim', links: [ {text: 'Mont', link:'#'}, {text: 'Ceket', link:'#'}, {text: 'Tüm Dış Giyim ►', link: '#'} ] } ],
       promos: [ { img: 'https://picsum.photos/200/100?image=201', title: 'Erkek Yeni Sezon', link: '#' }, { img: 'https://picsum.photos/200/100?image=202', title: 'Erkek İndirim', link: '#' } ]
     },
-    // Sol menüdeki 'Erkek Ayakkabı' linki için içerik
     'Erkek Ayakkabı': {
       columns: [ { title: 'Sneaker', links: [ {text: 'Tüm Sneakerlar', link: '#'} ] }, { title: 'Bot', links: [ {text: 'Deri Bot', link: '#'} ] } ],
       promos: [ { img: 'https://picsum.photos/200/100?image=203', title: 'Yeni Sezon Botlar', link: '#' } ]
@@ -193,8 +186,6 @@ const megaMenuData = ref({
     'Erkek Aksesuar': { columns: [ { title: 'Kemer', links: [ {text: 'Deri Kemer', link: '#'} ] } ], promos: [] },
     'Bakım': { columns: [ { title: 'Parfüm', links: [ {text: 'Tüm Parfümler', link: '#'} ] } ], promos: [] }
   },
-  // ... (Diğer kategoriler ('Kozmetik/BBS', 'Ev & Yaşam' vb.) de aynı bu yapıya dönüştürülmeli)
-  // ... (Şimdilik örnek olarak sadece 'Kadın' ve 'Erkek' güncellendi)
   'Kozmetik/BBS': { 'Parfüm': { columns: [ { title: 'Parfüm', links: [ {text: 'Kadın Parfüm', link:'#'}, {text: 'Erkek Parfüm', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=301', title: 'Çok Satan Parfümler', link: '#' } ] }, 'Makyaj': { columns: [ { title: 'Makyaj', links: [ {text: 'Yüz', link:'#'}, {text: 'Göz', link:'#'} ] } ], promos: [] } },
   'Ev & Yaşam': { 'Sofra': { columns: [ { title: 'Sofra', links: [ {text: 'Yemek Takımları', link:'#'} ] } ], promos: [] } },
   'Çocuk': { 'Kız Çocuk': { columns: [ { title: 'Kız Çocuk Giyim', links: [ {text: 'Elbise', link:'#'} ] } ], promos: [] } },
@@ -206,10 +197,9 @@ const megaMenuData = ref({
 });
 
 
-// --- DEĞİŞİKLİK: MEGA MENÜ STATE VE LOGIC ---
-
-const activeCategory = ref(null); // 'Kadın', 'Erkek' vb.
-const activeSideLink = ref(null); // 'Giyim', 'Ayakkabı' vb. (YENİ STATE)
+// --- MEGA MENÜ STATE VE LOGIC (Değişiklik yok) ---
+const activeCategory = ref(null); 
+const activeSideLink = ref(null); 
 const isMegaMenuVisible = ref(false);
 let hideTimeout = null;
 
@@ -217,60 +207,42 @@ function showMegaMenu(category) {
   clearTimeout(hideTimeout);
   const data = megaMenuData.value[category];
   
-  // Eğer kategori için veri varsa
   if (data && Object.keys(data).length > 0) {
     activeCategory.value = category;
-    
-    // YENİ: Menü açıldığında, o kategorinin İLK sideLink'ini (örn: 'Giyim')
-    // varsayılan olarak aktif yap.
     const firstSideLink = Object.keys(data)[0];
     activeSideLink.value = firstSideLink;
-    
     isMegaMenuVisible.value = true;
   } else {
-    // Verisi olmayan bir kategoriye gelinirse menüyü hemen gizle
     hideMegaMenuImmediately();
   }
 }
-
 function hideMegaMenu() {
   hideTimeout = setTimeout(() => {
     isMegaMenuVisible.value = false;
     activeCategory.value = null;
-    activeSideLink.value = null; // YENİ: SideLink state'ini de sıfırla
-  }, 150); // Fareyi menüden çekince kapanması için küçük bir gecikme
+    activeSideLink.value = null; 
+  }, 150);
 }
-
 function keepMenuOpen() {
   clearTimeout(hideTimeout);
 }
-
 function hideMegaMenuImmediately() {
     clearTimeout(hideTimeout);
     isMegaMenuVisible.value = false;
     activeCategory.value = null;
-    activeSideLink.value = null; // YENİ: SideLink state'ini de sıfırla
+    activeSideLink.value = null;
 }
-
-// YENİ FONKSİYON: Soldaki dikey menüde hover olunca çalışır
 function handleSideLinkHover(sideLinkKey) {
   activeSideLink.value = sideLinkKey;
 }
-
-// YENİ COMPUTED 1: 'Kadın' veya 'Erkek' gibi aktif kategorinin tüm verisini alır
 const currentCategoryData = computed(() => {
   return activeCategory.value ? megaMenuData.value[activeCategory.value] : null;
 });
-
-// YENİ COMPUTED 2: Aktif kategorinin sol menü linklerini (key'lerini) alır
 const currentSideLinks = computed(() => {
   return currentCategoryData.value ? Object.keys(currentCategoryData.value) : [];
 });
-
-// YENİ COMPUTED 3: Solda seçili olan 'activeSideLink'e ait içeriği alır
 const currentContentData = computed(() => {
   if (currentCategoryData.value && activeSideLink.value) {
-    // örn: megaMenuData['Kadın']['Giyim'] -> { columns: [...], promos: [...] }
     return currentCategoryData.value[activeSideLink.value];
   }
   return null;
@@ -278,7 +250,7 @@ const currentContentData = computed(() => {
 </script>
 
 <style scoped>
-/* DEĞİŞİKLİK: Sol dikey menüdeki aktif linki vurgulamak için stil eklendi */
+/* Mega menü stilleri (Değişiklik yok) */
 .mega-menu-side-link {
   display: block;
   padding: 0.75rem 1rem;
@@ -288,27 +260,21 @@ const currentContentData = computed(() => {
   font-weight: 600;
   white-space: nowrap;
   border-bottom: 1px solid #f8f9fa;
-  /* YENİ: Geçiş efekti eklendi */
   border-left: 3px solid transparent;
   padding-left: calc(1rem - 3px);
   transition: all 0.1s ease-in-out;
 }
-
-/* YENİ: Aktif veya hover olan linkin stili */
 .mega-menu-side-link:hover,
 li.active .mega-menu-side-link {
   color: #000;
   background-color: #f8f9fa;
   border-left: 3px solid #40579e; /* Beymen mavisi */
 }
-
-/* YENİ: Aktif linkteki ikonu (sağ ok) gizle */
 li.active .mega-menu-side-link i {
   display: none;
 }
 
-/* ... Diğer tüm stilleriniz aynı kalabilir ... */
-
+/* Genel stiller (Değişiklik yok) */
 header.sticky-top {
     z-index: 1020;
     background-color: white;
@@ -366,6 +332,11 @@ hr {
     color: #40579e;
     font-weight: 700;
 }
+
+/* ===== DEĞİŞİKLİK BURADA: .icon-item kuralı güncellendi ===== 
+  Dropdown için eklenen 'justify-content' kuralı kaldırıldı,
+  çünkü <BNavItem> linkleri için buna gerek yok.
+*/
 .icon-group .icon-item {
     margin-left: 1.5rem;
     padding: 0 !important;
@@ -373,7 +344,11 @@ hr {
     text-decoration: none;
     color: #333;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .icon-group .icon-item:hover {
     color: #000;
 }
@@ -446,8 +421,6 @@ hr {
     padding-right: 0;
     padding-left: 0;
 }
-/* .mega-menu-side-link stillerini yukarı taşıdık */
-
 .mega-menu-column {
     padding-left: 1.5rem;
 }
@@ -495,4 +468,10 @@ hr {
   font-weight: 500;
   text-align: center;
 }
+
+/* ===== DEĞİŞİKLİK BURADA: DROPDOWN STILLERI SİLİNDİ ===== */
+/* Burada daha önce yer alan .icon-item :deep(...) 
+  ile başlayan stil blokları, artık <BDropdown> 
+  kullanılmadığı için kaldırıldı.
+*/
 </style>
