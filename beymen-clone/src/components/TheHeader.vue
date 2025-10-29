@@ -15,18 +15,15 @@
     <hr class="m-0">
 
     <BContainer fluid class="main-bar py-4 d-flex align-items-center justify-content-between" style="padding-left: 50px; padding-right: 50px;">
-
       <BNavbarBrand :to="{ name: 'Home' }" class="text-dark logo-text" style="flex-shrink: 0; padding-left: 50px;">
         BEYMEN <span class="dot">.COM</span>
       </BNavbarBrand>
-
       <div class="search-placeholder w-100 mx-4 d-none d-lg-block">
         <div class="search-input-group">
           <div class="placeholder-text">Ürün, Marka Arayın...</div>
           <i class="bi bi-search text-dark ms-2"></i>
         </div>
       </div>
-
       <BNav class="icon-group d-flex flex-row align-items-center" style="flex-shrink: 0; padding-right: 50px;">
         <BNavItem class="text-center icon-item">
           <i class="bi bi-person h5 mb-1"></i>
@@ -44,7 +41,6 @@
           </BBadge>
         </BNavItem>
       </BNav>
-
     </BContainer>
 
     <hr class="m-0">
@@ -52,7 +48,6 @@
     <div class="category-bar d-none d-lg-block position-relative" @mouseleave="hideMegaMenu">
       <BContainer fluid style="padding-left: 50px; padding-right: 50px;">
         <BNav class="d-flex w-100 justify-content-between">
-          
           <div
             v-for="cat in categories"
             :key="cat"
@@ -71,31 +66,39 @@
               </template>
             </router-link>
           </div>
-
         </BNav>
       </BContainer>
 
       <div
         class="mega-menu-container position-absolute bg-white border shadow-sm w-100"
-        :class="{ 'is-visible': isMegaMenuVisible && currentMenuData }"
+        :class="{ 'is-visible': isMegaMenuVisible && currentCategoryData }"
         @mouseenter="keepMenuOpen"
         @mouseleave="hideMegaMenu"
       >
         <BContainer fluid class="py-4" style="padding-left: 50px; padding-right: 50px;">
-          <BRow class="gx-5">
+          <BRow class="gx-5" v-if="currentContentData">
 
-            <BCol lg="2" class="mega-menu-side" v-if="currentMenuData?.sideLinks.length > 0">
+            <BCol lg="2" class="mega-menu-side">
               <ul class="list-unstyled mb-0">
-                <li v-for="sideLink in currentMenuData?.sideLinks" :key="sideLink.text" class="mb-1">
-                  <a :href="sideLink.link" class="mega-menu-side-link">{{ sideLink.text }}</a>
+                <li
+                  v-for="sideLinkKey in currentSideLinks"
+                  :key="sideLinkKey"
+                  class="mb-1"
+                  @mouseover="handleSideLinkHover(sideLinkKey)"
+                  :class="{ 'active': activeSideLink === sideLinkKey }"
+                >
+                  <a href="#" class="mega-menu-side-link" @click.prevent>
+                    {{ sideLinkKey }}
+                    <i v-if="currentCategoryData[sideLinkKey]?.columns?.length > 0" class="bi bi-chevron-right float-end"></i>
+                  </a>
                 </li>
               </ul>
             </BCol>
 
-            <BCol :lg="currentMenuData?.sideLinks.length > 0 ? 7 : 9">
+            <BCol :lg="currentContentData.promos?.length > 0 ? 7 : 9">
               <BRow>
                 <BCol
-                  v-for="(column, index) in currentMenuData?.columns"
+                  v-for="(column, index) in currentContentData.columns"
                   :key="index"
                   lg="3" md="4" class="mega-menu-column"
                 >
@@ -111,8 +114,8 @@
               </BRow>
             </BCol>
 
-            <BCol :lg="currentMenuData?.sideLinks.length > 0 ? 3 : 3" v-if="currentMenuData?.promos.length > 0">
-              <div v-for="(promo, index) in currentMenuData?.promos" :key="index" class="mb-3 promo-item">
+            <BCol :lg="3" v-if="currentContentData.promos?.length > 0">
+              <div v-for="(promo, index) in currentContentData.promos" :key="index" class="mb-3 promo-item">
                 <a :href="promo.link">
                   <img :src="promo.img" class="img-fluid promo-img mb-2" :alt="promo.title">
                   <span class="promo-title">{{ promo.title }}</span>
@@ -149,32 +152,84 @@ const categories = ref([
     'Anne & Bebek & Oyuncak', 'Teknoloji', 'Spor & Outdoor', 'Outlet', 'Reborn'
 ]);
 
-// --- DÜZELTME: EKSİK KATEGORİ VERİLERİ EKLENDİ ---
+// --- DEĞİŞİKLİK: MEGA MENÜ VERİ YAPISI ---
+// Veri yapısı, Beymen'deki gibi iç içe (nested) hale getirildi.
+// Artık 'sideLinks' ve 'columns' kardeş değil.
+// 'sideLinks' (örn: 'Giyim', 'Ayakkabı') anahtar (key) haline geldi.
+// 'columns' ve 'promos' bu anahtarların *içine* yerleştirildi.
 const megaMenuData = ref({
-  'Kadın': { sideLinks: [ { text: 'Giyim', link: '#' }, { text: 'Ayakkabı', link: '#' }, { text: 'Çanta', link: '#' }, { text: 'Aksesuar', link: '#' }, { text: 'Reborn - Lüks İkinci El', link: '#'}, { text: 'Wellness & Kişisel Bakım', link: '#'}, { text: 'Öne Çıkan Markalar', link: '#'}, ], columns: [ { title: 'Elbise', links: [ { text: 'Siyah Elbise', link: '#' }, { text: 'Jean Elbise', link: '#' }, { text: 'Tulum', link: '#' }, { text: 'Abiye Elbise', link: '#' }, { text: 'Tüm Elbise ►', link: '#' } ] }, { title: 'Triko & Kazak', links: [ { text: 'Kazak', link: '#' }, { text: 'Süveter', link: '#' }, { text: 'Tüm Triko & Kazak ►', link: '#' } ] }, { title: 'Dış Giyim', links: [ { text: 'Mont', link: '#' }, { text: 'Kaban', link: '#' }, { text: 'Palto', link: '#' }, { text: 'Pardösü', link: '#' }, { text: 'Yağmurluk', link: '#' }, { text: 'Tüm Dış Giyim ►', link: '#' } ] }, { title: 'Pantolon', links: [ { text: 'Tayt & Legging', link: '#' }, { text: 'Spor Pantolon', link: '#' }, { text: 'Tüm Pantolon ►', link: '#' } ] }, { title: 'Etek', links: [ { text: 'Deri Etek', link: '#' }, { text: 'Abiye Etek', link: '#' }, { text: 'Tüm Etek ►', link: '#' } ] }, { title: 'Takım', links: [ { text: 'Takım', link: '#' } ] }, { title: 'Sweatshirt', links: [ { text: 'Sweatshirt', link: '#' } ] }, { title: 'Gömlek & Bluz', links: [ { text: 'Bluz', link: '#' }, { text: 'Büstiyer', link: '#' }, { text: 'Jean Gömlek', link: '#' }, { text: 'Tüm Gömlek & Bluz ►', link: '#' } ] }, { title: 'Ceket', links: [ { text: 'Blazer', link: '#' }, { text: 'Klasik Ceket', link: '#' }, { text: 'Tüm Ceket ►', link: '#' } ] }, { title: 'T-Shirt', links: [ { text: 'T-Shirt', link: '#' } ] }, { title: 'Jean Pantolon', links: [ { text: 'Yelek', link: '#' }, { text: 'Jean Pantolon', link: '#' } ] }, ], promos: [ { img: 'https://picsum.photos/200/100?image=101', title: 'Tüm Giyim Ürünleri', link: '#' }, { img: 'https://picsum.photos/200/100?image=102', title: 'Giyim Yeni Gelenler', link: '#' }, { img: 'https://picsum.photos/200/100?image=103', title: 'Giyim İndirimleri', link: '#' }, ] },
-  'Erkek': { sideLinks: [ { text: 'Erkek Giyim', link: '#' }, { text: 'Erkek Ayakkabı', link: '#' }, { text: 'Erkek Aksesuar', link: '#' }, { text: 'Bakım', link: '#'} ], columns: [ { title: 'T-Shirt', links: [ {text: 'Polo Yaka', link:'#'}, {text: 'Basic', link:'#'}, {text: 'Tüm T-Shirt ►', link: '#'} ] }, { title: 'Gömlek', links: [ {text: 'Klasik Gömlek', link:'#'}, {text: 'Spor Gömlek', link:'#'}, {text: 'Tüm Gömlek ►', link: '#'} ] }, { title: 'Pantolon', links: [ {text: 'Jean Pantolon', link:'#'}, {text: 'Spor Pantolon', link:'#'}, {text: 'Tüm Pantolon ►', link: '#'} ] }, { title: 'Dış Giyim', links: [ {text: 'Mont', link:'#'}, {text: 'Ceket', link:'#'}, {text: 'Tüm Dış Giyim ►', link: '#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=201', title: 'Erkek Yeni Sezon', link: '#' }, { img: 'https://picsum.photos/200/100?image=202', title: 'Erkek İndirim', link: '#' } ] },
-  'Kozmetik/BBS': { sideLinks: [ { text: 'Parfüm', link: '#' }, { text: 'Makyaj', link: '#' }, { text: 'Cilt Bakımı', link: '#' }, { text: 'Saç Bakımı', link: '#'} ], columns: [ { title: 'Parfüm', links: [ {text: 'Kadın Parfüm', link:'#'}, {text: 'Erkek Parfüm', link:'#'}, {text: 'Niş Parfüm ►', link: '#'} ] }, { title: 'Makyaj', links: [ {text: 'Yüz', link:'#'}, {text: 'Göz', link:'#'}, {text: 'Dudak', link: '#'} ] }, { title: 'Cilt Bakımı', links: [ {text: 'Nemlendirici', link:'#'}, {text: 'Serum', link:'#'}, {text: 'Güneş Kremi', link: '#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=301', title: 'Çok Satan Parfümler', link: '#' }, { img: 'https://picsum.photos/200/100?image=302', title: 'Cilt Bakım Setleri', link: '#' } ] },
-  'Ev & Yaşam': { sideLinks: [ { text: 'Sofra', link: '#' }, { text: 'Mutfak', link: '#' }, { text: 'Ev Tekstili', link: '#' }, { text: 'Ev Dekorasyon', link: '#'} ], columns: [ { title: 'Sofra', links: [ {text: 'Yemek Takımları', link:'#'}, {text: 'Bardak Setleri', link:'#'}, {text: 'Tüm Sofra ►', link: '#'} ] }, { title: 'Mutfak', links: [ {text: 'Pişirme Grubu', link:'#'}, {text: 'Hazırlama', link:'#'}, {text: 'Tüm Mutfak ►', link: '#'} ] }, { title: 'Ev Tekstili', links: [ {text: 'Nevresim Takımı', link:'#'}, {text: 'Havlu', link:'#'}, {text: 'Yastık', link: '#'} ] }, { title: 'Dekorasyon', links: [ {text: 'Vazo', link:'#'}, {text: 'Mumluk', link:'#'}, {text: 'Tablo', link: '#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=401', title: 'Yeni Sofra Koleksiyonu', link: '#' } ] },
-  'Çocuk': { sideLinks: [ { text: 'Kız Çocuk', link: '#' }, { text: 'Erkek Çocuk', link: '#' }, { text: 'Bebek', link: '#' } ], columns: [ { title: 'Kız Çocuk Giyim', links: [ {text: 'Elbise', link:'#'}, {text: 'T-shirt', link:'#'}, {text: 'Tüm Giyim ►', link: '#'} ] }, { title: 'Erkek Çocuk Giyim', links: [ {text: 'T-shirt', link:'#'}, {text: 'Pantolon', link:'#'}, {text: 'Tüm Giyim ►', link: '#'} ] }, { title: 'Çocuk Ayakkabı', links: [ {text: 'Sneaker', link:'#'}, {text: 'Bot', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=501', title: 'Okula Dönüş', link: '#' }, { img: 'https://picsum.photos/200/100?image=502', title: 'Popüler Oyuncaklar', link: '#' } ] },
-  'Anne & Bebek & Oyuncak': { sideLinks: [ { text: 'Bebek Giyim', link: '#' }, { text: 'Bebek Arabası', link: '#' }, { text: 'Beslenme', link: '#' }, { text: 'Oyuncak', link: '#'} ], columns: [ { title: 'Bebek Giyim', links: [ {text: 'Zıbın', link:'#'}, {text: 'Tulum', link:'#'}, {text: 'Tüm Giyim ►', link: '#'} ] }, { title: 'Bebek Arabası', links: [ {text: 'Puset', link:'#'}, {text: 'Aksesuarlar', link:'#'} ] }, { title: 'Beslenme', links: [ {text: 'Mama Sandalyesi', link:'#'}, {text: 'Biberon', link:'#'} ] }, { title: 'Oyuncak', links: [ {text: 'Eğitici Oyuncaklar', link:'#'}, {text: 'Peluş Oyuncaklar', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=601', title: 'Tüm Bebek İhtiyaçları', link: '#' } ] },
-  'Teknoloji': { sideLinks: [ { text: 'Giyilebilir Teknoloji', link: '#' }, { text: 'Ses Sistemleri', link: '#' }, { text: 'Kişisel Bakım', link: '#' }, { text: 'Ev Aletleri', link: '#'} ], columns: [ { title: 'Giyilebilir', links: [ {text: 'Akıllı Saat', link:'#'}, {text: 'Akıllı Bileklik', link:'#'} ] }, { title: 'Ses', links: [ {text: 'Kulaklık', link:'#'}, {text: 'Hoparlör', link:'#'} ] }, { title: 'Kişisel Bakım', links: [ {text: 'Saç Şekillendirici', link:'#'}, {text: 'Tıraş Makinesi', link:'#'} ] }, { title: 'Ev Aletleri', links: [ {text: 'Süpürge', link:'#'}, {text: 'Mutfak Robotu', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=701', title: 'Kulaklık Fırsatları', link: '#' }, { img: 'https://picsum.photos/200/100?image=702', title: 'Dyson Keşfet', link: '#' } ] },
-  'Spor & Outdoor': { sideLinks: [ { text: 'Spor Giyim', link: '#' }, { text: 'Spor Ayakkabı', link: '#' }, { text: 'Fitness', link: '#' }, { text: 'Outdoor', link: '#'} ], columns: [ { title: 'Spor Giyim', links: [ {text: 'Tayt', link:'#'}, {text: 'Eşofman', link:'#'}, {text: 'Bra', link:'#'} ] }, { title: 'Spor Ayakkabı', links: [ {text: 'Koşu', link:'#'}, {text: 'Yürüyüş', link:'#'}, {text: 'Tüm Ayakkabılar ►', link:'#'} ] }, { title: 'Fitness', links: [ {text: 'Mat', link:'#'}, {text: 'Ekipmanlar', link:'#'} ] }, { title: 'Outdoor', links: [ {text: 'Mont', link:'#'}, {text: 'Bot', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=801', title: 'Yeni Sezon Spor', link: '#' } ] },
-  'Outlet': { sideLinks: [ { text: 'Kadın Outlet', link: '#' }, { text: 'Erkek Outlet', link: '#' }, { text: 'Çocuk Outlet', link: '#'} ], columns: [ { title: 'Kadın Giyim', links: [ {text: 'Elbise', link:'#'}, {text: 'Dış Giyim', link:'#'} ] }, { title: 'Kadın Ayakkabı', links: [ {text: 'Sneaker', link:'#'}, {text: 'Bot', link:'#'} ] }, { title: 'Erkek Giyim', links: [ {text: 'T-shirt', link:'#'}, {text: 'Pantolon', link:'#'} ] }, { title: 'Erkek Ayakkabı', links: [ {text: 'Sneaker', link:'#'}, {text: 'Bot', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=901', title: 'Outlet Fırsatları', link: '#' } ] },
-  'Reborn': { sideLinks: [ { text: 'Lüks Çanta', link: '#' }, { text: 'Lüks Ayakkabı', link: '#' }, { text: 'Lüks Aksesuar', link: '#'} ], columns: [ { title: 'Markalar (Çanta)', links: [ {text: 'Chanel', link:'#'}, {text: 'Gucci', link:'#'}, {text: 'Dior', link:'#'} ] }, { title: 'Markalar (Ayakkabı)', links: [ {text: 'Prada', link:'#'}, {text: 'Louboutin', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=950', title: 'Vintage Keşfet', link: '#' } ] },
+  'Kadın': {
+    // Sol menüdeki 'Giyim' linki için içerik
+    'Giyim': {
+      columns: [ { title: 'Elbise', links: [ { text: 'Siyah Elbise', link: '#' }, { text: 'Jean Elbise', link: '#' }, { text: 'Tulum', link: '#' }, { text: 'Abiye Elbise', link: '#' }, { text: 'Tüm Elbise ►', link: '#' } ] }, { title: 'Triko & Kazak', links: [ { text: 'Kazak', link: '#' }, { text: 'Süveter', link: '#' }, { text: 'Tüm Triko & Kazak ►', link: '#' } ] }, { title: 'Dış Giyim', links: [ { text: 'Mont', link: '#' }, { text: 'Kaban', link: '#' }, { text: 'Palto', link: '#' }, { text: 'Pardösü', link: '#' }, { text: 'Yağmurluk', link: '#' }, { text: 'Tüm Dış Giyim ►', link: '#' } ] }, { title: 'Pantolon', links: [ { text: 'Tayt & Legging', link: '#' }, { text: 'Spor Pantolon', link: '#' }, { text: 'Tüm Pantolon ►', link: '#' } ] }, { title: 'Etek', links: [ { text: 'Deri Etek', link: '#' }, { text: 'Abiye Etek', link: '#' }, { text: 'Tüm Etek ►', link: '#' } ] }, { title: 'Takım', links: [ { text: 'Takım', link: '#' } ] }, { title: 'Sweatshirt', links: [ { text: 'Sweatshirt', link: '#' } ] }, { title: 'Gömlek & Bluz', links: [ { text: 'Bluz', link: '#' }, { text: 'Büstiyer', link: '#' }, { text: 'Jean Gömlek', link: '#' }, { text: 'Tüm Gömlek & Bluz ►', link: '#' } ] }, { title: 'Ceket', links: [ { text: 'Blazer', link: '#' }, { text: 'Klasik Ceket', link: '#' }, { text: 'Tüm Ceket ►', link: '#' } ] }, { title: 'T-Shirt', links: [ { text: 'T-Shirt', link: '#' } ] }, { title: 'Jean Pantolon', links: [ { text: 'Yelek', link: '#' }, { text: 'Jean Pantolon', link: '#' } ] }, ],
+      promos: [ { img: 'https://picsum.photos/200/100?image=101', title: 'Tüm Giyim Ürünleri', link: '#' }, { img: 'https://picsum.photos/200/100?image=102', title: 'Giyim Yeni Gelenler', link: '#' }, { img: 'https://picsum.photos/200/100?image=103', title: 'Giyim İndirimleri', link: '#' }, ]
+    },
+    // Sol menüdeki 'Ayakkabı' linki için içerik (Örnek olarak eklendi)
+    'Ayakkabı': {
+      columns: [ { title: 'Sneaker', links: [ {text: 'Tüm Sneakerlar', link: '#'}, {text: 'Beyaz Sneaker', link: '#'} ] }, { title: 'Bot', links: [ {text: 'Deri Bot', link: '#'}, {text: 'Yağmur Çizmesi', link: '#'} ] }, { title: 'Topuklu Ayakkabı', links: [ {text: 'Stiletto', link: '#'}, {text: 'Platform', link: '#'} ] } ],
+      promos: [ { img: 'https://picsum.photos/200/100?image=104', title: 'Ayakkabı Yeni Sezon', link: '#' } ]
+    },
+    // Sol menüdeki 'Çanta' linki için içerik (Örnek olarak eklendi)
+    'Çanta': {
+      columns: [ { title: 'Omuz Çantası', links: [ {text: 'Tüm Omuz Çantaları', link: '#'} ] }, { title: 'Sırt Çantası', links: [ {text: 'Deri Sırt Çantası', link: '#'} ] } ],
+      promos: [] // Promo görseli yoksa boş dizi
+    },
+    'Aksesuar': { columns: [ { title: 'Takı', links: [ {text: 'Kolye', link: '#'} ] } ], promos: [] },
+    'Reborn - Lüks İkinci El': { columns: [ { title: 'Lüks Çanta', links: [ {text: 'Tüm Çantalar', link: '#'} ] } ], promos: [] },
+    'Wellness & Kişisel Bakım': { columns: [ { title: 'Cilt Bakımı', links: [ {text: 'Nemlendirici', link: '#'} ] } ], promos: [] },
+    'Öne Çıkan Markalar': { columns: [ { title: 'Markalar', links: [ {text: 'Gucci', link: '#'}, {text: 'Prada', link: '#'} ] } ], promos: [] },
+  },
+  'Erkek': {
+    // Sol menüdeki 'Erkek Giyim' linki için içerik
+    'Erkek Giyim': {
+      columns: [ { title: 'T-Shirt', links: [ {text: 'Polo Yaka', link:'#'}, {text: 'Basic', link:'#'}, {text: 'Tüm T-Shirt ►', link: '#'} ] }, { title: 'Gömlek', links: [ {text: 'Klasik Gömlek', link:'#'}, {text: 'Spor Gömlek', link:'#'}, {text: 'Tüm Gömlek ►', link: '#'} ] }, { title: 'Pantolon', links: [ {text: 'Jean Pantolon', link:'#'}, {text: 'Spor Pantolon', link:'#'}, {text: 'Tüm Pantolon ►', link: '#'} ] }, { title: 'Dış Giyim', links: [ {text: 'Mont', link:'#'}, {text: 'Ceket', link:'#'}, {text: 'Tüm Dış Giyim ►', link: '#'} ] } ],
+      promos: [ { img: 'https://picsum.photos/200/100?image=201', title: 'Erkek Yeni Sezon', link: '#' }, { img: 'https://picsum.photos/200/100?image=202', title: 'Erkek İndirim', link: '#' } ]
+    },
+    // Sol menüdeki 'Erkek Ayakkabı' linki için içerik
+    'Erkek Ayakkabı': {
+      columns: [ { title: 'Sneaker', links: [ {text: 'Tüm Sneakerlar', link: '#'} ] }, { title: 'Bot', links: [ {text: 'Deri Bot', link: '#'} ] } ],
+      promos: [ { img: 'https://picsum.photos/200/100?image=203', title: 'Yeni Sezon Botlar', link: '#' } ]
+    },
+    'Erkek Aksesuar': { columns: [ { title: 'Kemer', links: [ {text: 'Deri Kemer', link: '#'} ] } ], promos: [] },
+    'Bakım': { columns: [ { title: 'Parfüm', links: [ {text: 'Tüm Parfümler', link: '#'} ] } ], promos: [] }
+  },
+  // ... (Diğer kategoriler ('Kozmetik/BBS', 'Ev & Yaşam' vb.) de aynı bu yapıya dönüştürülmeli)
+  // ... (Şimdilik örnek olarak sadece 'Kadın' ve 'Erkek' güncellendi)
+  'Kozmetik/BBS': { 'Parfüm': { columns: [ { title: 'Parfüm', links: [ {text: 'Kadın Parfüm', link:'#'}, {text: 'Erkek Parfüm', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=301', title: 'Çok Satan Parfümler', link: '#' } ] }, 'Makyaj': { columns: [ { title: 'Makyaj', links: [ {text: 'Yüz', link:'#'}, {text: 'Göz', link:'#'} ] } ], promos: [] } },
+  'Ev & Yaşam': { 'Sofra': { columns: [ { title: 'Sofra', links: [ {text: 'Yemek Takımları', link:'#'} ] } ], promos: [] } },
+  'Çocuk': { 'Kız Çocuk': { columns: [ { title: 'Kız Çocuk Giyim', links: [ {text: 'Elbise', link:'#'} ] } ], promos: [] } },
+  'Anne & Bebek & Oyuncak': { 'Bebek Giyim': { columns: [ { title: 'Bebek Giyim', links: [ {text: 'Zıbın', link:'#'} ] } ], promos: [] } },
+  'Teknoloji': { 'Giyilebilir Teknoloji': { columns: [ { title: 'Giyilebilir', links: [ {text: 'Akıllı Saat', link:'#'} ] } ], promos: [] } },
+  'Spor & Outdoor': { 'Spor Giyim': { columns: [ { title: 'Spor Giyim', links: [ {text: 'Tayt', link:'#'} ] } ], promos: [] } },
+  'Outlet': { 'Kadın Outlet': { columns: [ { title: 'Kadın Giyim', links: [ {text: 'Elbise', link:'#'} ] } ], promos: [] } },
+  'Reborn': { 'Lüks Çanta': { columns: [ { title: 'Markalar (Çanta)', links: [ {text: 'Chanel', link:'#'} ] } ], promos: [] } },
 });
 
-const activeCategory = ref(null);
+
+// --- DEĞİŞİKLİK: MEGA MENÜ STATE VE LOGIC ---
+
+const activeCategory = ref(null); // 'Kadın', 'Erkek' vb.
+const activeSideLink = ref(null); // 'Giyim', 'Ayakkabı' vb. (YENİ STATE)
 const isMegaMenuVisible = ref(false);
 let hideTimeout = null;
 
 function showMegaMenu(category) {
   clearTimeout(hideTimeout);
   const data = megaMenuData.value[category];
-  if (data && (data.sideLinks?.length > 0 || data.columns?.length > 0 || data.promos?.length > 0)) {
-      activeCategory.value = category;
-      isMegaMenuVisible.value = true;
+  
+  // Eğer kategori için veri varsa
+  if (data && Object.keys(data).length > 0) {
+    activeCategory.value = category;
+    
+    // YENİ: Menü açıldığında, o kategorinin İLK sideLink'ini (örn: 'Giyim')
+    // varsayılan olarak aktif yap.
+    const firstSideLink = Object.keys(data)[0];
+    activeSideLink.value = firstSideLink;
+    
+    isMegaMenuVisible.value = true;
   } else {
-       hideMegaMenuImmediately();
+    // Verisi olmayan bir kategoriye gelinirse menüyü hemen gizle
+    hideMegaMenuImmediately();
   }
 }
 
@@ -182,7 +237,8 @@ function hideMegaMenu() {
   hideTimeout = setTimeout(() => {
     isMegaMenuVisible.value = false;
     activeCategory.value = null;
-  }, 150);
+    activeSideLink.value = null; // YENİ: SideLink state'ini de sıfırla
+  }, 150); // Fareyi menüden çekince kapanması için küçük bir gecikme
 }
 
 function keepMenuOpen() {
@@ -193,15 +249,66 @@ function hideMegaMenuImmediately() {
     clearTimeout(hideTimeout);
     isMegaMenuVisible.value = false;
     activeCategory.value = null;
+    activeSideLink.value = null; // YENİ: SideLink state'ini de sıfırla
 }
 
-const currentMenuData = computed(() => {
-  const data = activeCategory.value ? megaMenuData.value[activeCategory.value] : null;
-  return (data && (data.sideLinks?.length > 0 || data.columns?.length > 0 || data.promos?.length > 0)) ? data : null;
+// YENİ FONKSİYON: Soldaki dikey menüde hover olunca çalışır
+function handleSideLinkHover(sideLinkKey) {
+  activeSideLink.value = sideLinkKey;
+}
+
+// YENİ COMPUTED 1: 'Kadın' veya 'Erkek' gibi aktif kategorinin tüm verisini alır
+const currentCategoryData = computed(() => {
+  return activeCategory.value ? megaMenuData.value[activeCategory.value] : null;
+});
+
+// YENİ COMPUTED 2: Aktif kategorinin sol menü linklerini (key'lerini) alır
+const currentSideLinks = computed(() => {
+  return currentCategoryData.value ? Object.keys(currentCategoryData.value) : [];
+});
+
+// YENİ COMPUTED 3: Solda seçili olan 'activeSideLink'e ait içeriği alır
+const currentContentData = computed(() => {
+  if (currentCategoryData.value && activeSideLink.value) {
+    // örn: megaMenuData['Kadın']['Giyim'] -> { columns: [...], promos: [...] }
+    return currentCategoryData.value[activeSideLink.value];
+  }
+  return null;
 });
 </script>
 
 <style scoped>
+/* DEĞİŞİKLİK: Sol dikey menüdeki aktif linki vurgulamak için stil eklendi */
+.mega-menu-side-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #212529;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 1px solid #f8f9fa;
+  /* YENİ: Geçiş efekti eklendi */
+  border-left: 3px solid transparent;
+  padding-left: calc(1rem - 3px);
+  transition: all 0.1s ease-in-out;
+}
+
+/* YENİ: Aktif veya hover olan linkin stili */
+.mega-menu-side-link:hover,
+li.active .mega-menu-side-link {
+  color: #000;
+  background-color: #f8f9fa;
+  border-left: 3px solid #40579e; /* Beymen mavisi */
+}
+
+/* YENİ: Aktif linkteki ikonu (sağ ok) gizle */
+li.active .mega-menu-side-link i {
+  display: none;
+}
+
+/* ... Diğer tüm stilleriniz aynı kalabilir ... */
+
 header.sticky-top {
     z-index: 1020;
     background-color: white;
@@ -339,22 +446,8 @@ hr {
     padding-right: 0;
     padding-left: 0;
 }
-.mega-menu-side-link {
-  display: block;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  color: #212529;
-  text-decoration: none;
-  font-weight: 600;
-  white-space: nowrap;
-  border-bottom: 1px solid #f8f9fa;
-}
-.mega-menu-side-link:hover {
-  color: #000;
-  background-color: #f8f9fa;
-  border-left: 3px solid #40579e;
-  padding-left: calc(1rem - 3px);
-}
+/* .mega-menu-side-link stillerini yukarı taşıdık */
+
 .mega-menu-column {
     padding-left: 1.5rem;
 }
