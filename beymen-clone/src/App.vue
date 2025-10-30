@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-// import { BApp } from 'bootstrap-vue-next' // Kaldırıldı
+// '<BApp>' import'u yok, çünkü kullanmıyoruz.
 import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 </script>

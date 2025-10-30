@@ -439,7 +439,7 @@ onMounted(() => {
 
 /* Carousel Resim Ayarları */
 .carousel-img {
-  height: 770px; /* Veya istediğin yükseklik */
+  height: 700px; /* Veya istediğin yükseklik */
   width: 100%;
   object-fit: cover;
   display: block;

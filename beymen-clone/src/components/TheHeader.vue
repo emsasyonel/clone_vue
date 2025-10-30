@@ -2,17 +2,17 @@
   <header class="sticky-top bg-white border-bottom position-relative">
 
     <BContainer fluid class="top-bar py-1 border-bottom d-flex justify-content-end" style="padding-left: 50px; padding-right: 20px;">
-      <BNav class="justify-content-end">
-        <BNavItem href="#" class="small top-link">Repair</BNavItem>
-        <BNavItem href="#" class="small top-link">Sipariş Takibi</BNavItem>
-        <BNavItem href="#" class="small top-link">Kampanyalar</BNavItem>
-        <BNavItem href="#" class="small top-link">The One</BNavItem>
-        <BNavItem href="#" class="small top-link">Servisler</BNavItem>
-        <BNavItem href="#" class="small top-link"><i class="bi bi-globe me-1"></i> TR</BNavItem>
+      <BNav class="justify-content-end" style="color: #555 !important;">
+        <BNavItem href="#" class="small top-link"><span class="d-block icon-text">Repair</span></BNavItem>
+        <BNavItem href="#" class="small top-link"><span class="d-block icon-text">Sipariş Takibi</span></BNavItem>
+        <BNavItem href="#" class="small top-link"><span class="d-block icon-text">Kampanyalar</span></BNavItem>
+        <BNavItem href="#" class="small top-link"><span class="d-block icon-text">The One</span></BNavItem>
+        <BNavItem href="#" class="small top-link"><span class="d-block icon-text">Servisler</span></BNavItem>
+        <BNavItem href="#" class="small top-link"><span class="d-block icon-text"><i class="bi bi-globe me-1"></i> TR</span></BNavItem>
       </BNav>
     </BContainer>
 
-    <hr class="m-0">
+
 
     <BContainer fluid class="main-bar py-4 d-flex align-items-center justify-content-between" style="padding-left: 50px; padding-right: 50px;">
 
@@ -49,7 +49,6 @@
 
     </BContainer>
 
-    <hr class="m-0">
 
     <div class="category-bar d-none d-lg-block position-relative" @mouseleave="hideMegaMenu">
       <BContainer fluid style="padding-left: 50px; padding-right: 50px;">
@@ -158,44 +157,408 @@ const categories = ref([
 const megaMenuData = ref({
   'Kadın': {
     'Giyim': {
-      columns: [ { title: 'Elbise', links: [ { text: 'Siyah Elbise', link: '#' }, { text: 'Jean Elbise', link: '#' }, { text: 'Tulum', link: '#' }, { text: 'Abiye Elbise', link: '#' }, { text: 'Tüm Elbise ►', link: '#' } ] }, { title: 'Triko & Kazak', links: [ { text: 'Kazak', link: '#' }, { text: 'Süveter', link: '#' }, { text: 'Tüm Triko & Kazak ►', link: '#' } ] }, { title: 'Dış Giyim', links: [ { text: 'Mont', link: '#' }, { text: 'Kaban', link: '#' }, { text: 'Palto', link: '#' }, { text: 'Pardösü', link: '#' }, { text: 'Yağmurluk', link: '#' }, { text: 'Tüm Dış Giyim ►', link: '#' } ] }, { title: 'Pantolon', links: [ { text: 'Tayt & Legging', link: '#' }, { text: 'Spor Pantolon', link: '#' }, { text: 'Tüm Pantolon ►', link: '#' } ] }, { title: 'Etek', links: [ { text: 'Deri Etek', link: '#' }, { text: 'Abiye Etek', link: '#' }, { text: 'Tüm Etek ►', link: '#' } ] }, { title: 'Takım', links: [ { text: 'Takım', link: '#' } ] }, { title: 'Sweatshirt', links: [ { text: 'Sweatshirt', link: '#' } ] }, { title: 'Gömlek & Bluz', links: [ { text: 'Bluz', link: '#' }, { text: 'Büstiyer', link: '#' }, { text: 'Jean Gömlek', link: '#' }, { text: 'Tüm Gömlek & Bluz ►', link: '#' } ] }, { title: 'Ceket', links: [ { text: 'Blazer', link: '#' }, { text: 'Klasik Ceket', link: '#' }, { text: 'Tüm Ceket ►', link: '#' } ] }, { title: 'T-Shirt', links: [ { text: 'T-Shirt', link: '#' } ] }, { title: 'Jean Pantolon', links: [ { text: 'Yelek', link: '#' }, { text: 'Jean Pantolon', link: '#' } ] }, ],
-      promos: [ { img: 'https://picsum.photos/200/100?image=101', title: 'Tüm Giyim Ürünleri', link: '#' }, { img: 'https://picsum.photos/200/100?image=102', title: 'Giyim Yeni Gelenler', link: '#' }, { img: 'https://picsum.photos/200/100?image=103', title: 'Giyim İndirimleri', link: '#' }, ]
+      columns: [
+        { title: 'Elbise', links: [ { text: 'Siyah Elbise', link: '#' }, { text: 'Jean Elbise', link: '#' }, { text: 'Tulum', link: '#' }, { text: 'Abiye Elbise', link: '#' }, { text: 'Tüm Elbise ►', link: '#' } ] },
+        { title: 'Takım', links: [ { text: 'Takım', link: '#' } ] }, // // 'Takım' eklendi
+        { title: 'Etek', links: [ { text: 'Deri Etek', link: '#' }, { text: 'Abiye Etek', link: '#' }, { text: 'Tüm Etek ►', link: '#' } ] },
+        { title: 'Triko & Kazak', links: [ { text: 'Kazak', link: '#' }, { text: 'Süveter', link: '#' }, { text: 'Tüm Triko & Kazak ►', link: '#' } ] },
+        { title: 'Sweatshirt', links: [ { text: 'Sweatshirt', link: '#' } ] }, // // 'Sweatshirt' eklendi
+        { title: 'Gömlek & Bluz', links: [ { text: 'Bluz', link: '#' }, { text: 'Büstiyer', link: '#' }, { text: 'Jean Gömlek', link: '#' }, { text: 'Tüm Gömlek & Bluz ►', link: '#' } ] },
+        { title: 'T-Shirt', links: [ { text: 'T-Shirt', link: '#' } ] }, // // 'T-Shirt' eklendi
+        { title: 'Dış Giyim', links: [
+            { text: 'Mont', link: '#' },
+            { text: 'Kaban', link: '#' },
+            { text: 'Palto', link: '#' },
+            { text: 'Pardösü', link: '#' },
+            { text: 'Yağmurluk', link: '#' },
+            { text: 'Yelek', link: '#' }, // // 'Yelek' buraya taşındı
+            { text: 'Tüm Dış Giyim ►', link: '#' }
+          ]
+        },
+        { title: 'Ceket', links: [ { text: 'Blazer', link: '#' }, { text: 'Klasik Ceket', link: '#' }, { text: 'Tüm Ceket ►', link: '#' } ] },
+        { title: 'Pantolon', links: [ { text: 'Tayt & Legging', link: '#' }, { text: 'Spor Pantolon', link: '#' }, { text: 'Tüm Pantolon ►', link: '#' } ] },
+        { title: 'Jean Pantolon', links: [ { text: 'Jean Pantolon', link: '#' } ] }, // // 'Yelek' buradan kaldırıldı
+      ],
+      promos: [
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-urunler_2022030815084030426.png', title: 'Tüm Giyim Ürünleri', link: '#' },
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-yeni-gelenler_2022030815085866516.png', title: 'Giyim Yeni Gelenler', link: '#' },
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-indirimliler_2022030815082413329.png', title: 'Giyim İndirimleri', link: '#' },
+      ]
     },
     'Ayakkabı': {
-      columns: [ { title: 'Sneaker', links: [ {text: 'Tüm Sneakerlar', link: '#'}, {text: 'Beyaz Sneaker', link: '#'} ] }, { title: 'Bot', links: [ {text: 'Deri Bot', link: '#'}, {text: 'Yağmur Çizmesi', link: '#'} ] }, { title: 'Topuklu Ayakkabı', links: [ {text: 'Stiletto', link: '#'}, {text: 'Platform', link: '#'} ] } ],
-      promos: [ { img: 'https://picsum.photos/200/100?image=104', title: 'Ayakkabı Yeni Sezon', link: '#' } ]
+      // // AYAKKABI GÜNCELLENDİ (Başlıksız 2 sütun)
+      columns: [
+        {
+          title: '', // Başlık yok
+          links: [
+            { text: 'Sneaker', link: '#' },
+            { text: 'Bot', link: '#' },
+            { text: 'Çizme', link: '#' },
+            { text: 'Kar Botu', link: '#' },
+            { text: 'Terlik', link: '#' },
+          ]
+        },
+        {
+          title: '', // Başlık yok
+          links: [
+            { text: 'Gece Ayakkabısı', link: '#' },
+            { text: 'Topuklu Ayakkabı', link: '#' },
+            { text: 'Babet', link: '#' },
+            { text: 'Loafer', link: '#' },
+          ]
+        }
+      ],
+      promos: [
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-urunler_2022030815084030426.png', title: 'Tüm Ayakkabı Ürünleri', link: '#' },
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-yeni-gelenler_2022030815085866516.png', title: 'Ayakkabı Yeni Gelenler', link: '#' },
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-indirimliler_2022030815082413329.png', title: 'Ayakkabı İndirimler', link: '#' }
+      ]
     },
     'Çanta': {
-      columns: [ { title: 'Omuz Çantası', links: [ {text: 'Tüm Omuz Çantaları', link: '#'} ] }, { title: 'Sırt Çantası', links: [ {text: 'Deri Sırt Çantası', link: '#'} ] } ],
+      // // ÇANTA GÜNCELLENDİ (Başlıksız 2 sütun)
+      columns: [
+        { 
+          title: '',
+          links: [
+            { text: 'Omuz Çantası', link: '#' },
+            { text: 'Alışveriş Çantası', link: '#' },
+            { text: 'El Portföyü', link: '#' },
+            { text: 'El Çantası', link: '#' },
+            { text: 'Sırt Çantası', link: '#' },
+            { text: 'Bavul & Seyahat Çantası', link: '#' },
+          ] 
+        },
+        { 
+          title: '',
+          links: [
+            { text: 'Abiye Çanta', link: '#' },
+            { text: 'Bel Çantası', link: '#' },
+            { text: 'Torba/Büzgülü Çanta', link: '#' },
+            { text: 'Evrak Çantası & Laptop Çantası', link: '#' },
+            { text: 'Çanta Aksesuarı', link: '#' },
+          ] 
+        }
+      ],
+      promos: [
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-urunler_2022030815084030426.png', title: 'Tüm Çanta Ürünleri', link: '#' },
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-yeni-gelenler_2022030815085866516.png', title: 'Çanta Yeni Gelenler', link: '#' },
+        { img: 'https://cdn.beymen.com/bannerimages/menu-tum-indirimliler_2022030815082413329.png', title: 'Çanta İndirimler', link: '#' }
+      ]
+    },
+    'Aksesuar': {
+      // // AKSESUAR GÜNCELLENDİ (Başlıksız 1 sütun + Başlıklı 2 sütun)
+      columns: [
+        {
+          title: '', // Başlıksız sütun
+          links: [
+            { text: 'Güneş Gözlüğü', link: '#' },
+            { text: 'Cüzdan', link: '#' },
+            { text: 'Kemer', link: '#' },
+            { text: 'Şapka', link: '#' },
+            { text: 'Kartvizitlik', link: '#' },
+            { text: 'Kol saati', link: '#' },
+            { text: 'Eşarp / Fular / Şal', link: '#' },
+            { text: 'Anahtarlık', link: '#' },
+            { text: 'Çorap', link: '#' },
+          ]
+        },
+        {
+          title: 'Bijüteri', // Başlıklı sütun
+          links: [
+            { text: 'Bijuteri Bileklik', link: '#' }, { text: 'Bijuteri Kolye', link: '#' }, { text: 'Bijuteri Küpe', link: '#' },
+            { text: 'Bijuteri Yüzük', link: '#' }, { text: 'Gümüş Küpe', link: '#' }, { text: 'Gümüş Yüzük', link: '#' },
+            { text: 'İnci Kolye', link: '#' }, { text: 'İnci Küpe', link: '#' }, { text: 'Gümüş Kolye', link: '#' },
+            { text: 'Tüm Bijüteri ►', link: '#' }
+          ]
+        },
+        {
+          title: 'Mücevher', // Başlıklı sütun
+          links: [
+            { text: 'Altın Yüzük', link: '#' }, { text: 'Altın Kolye', link: '#' }, { text: 'Altın Küpe', link: '#' },
+            { text: 'Altın Bileklik', link: '#' }, { text: 'Altın Bilezik', link: '#' }, { text: 'Pırlanta Bileklik', link: '#' },
+            { text: 'Pırlanta Kolye', link: '#' }, { text: 'Pırlanta Küpe', link: '#' }, { text: 'Pırlanta Yüzük', link: '#' },
+            { text: 'Tüm Mücevher ►', link: '#' }
+          ]
+        }
+      ],
+      promos: [
+        { img: 'https://picsum.photos/200/100?image=150', title: 'Tüm Aksesuarlar', link: '#' },
+        { img: 'https://picsum.photos/200/100?image=151', title: 'Aksesuar Yeni Gelenler', link: '#' }
+      ]
+    },
+    'Reborn - Lüks İkinci El': {
+      // // Örnek olarak dolduruldu
+      'Lüks Çanta': {
+        columns: [ { title: 'Markalar', links: [ {text: 'Chanel', link:'#'}, {text: 'Gucci', link:'#'} ] } ],
+        promos: [ { img: 'https://picsum.photos/200/100?image=950', title: 'Vintage Keşfet', link: '#' } ]
+      },
+      'Lüks Ayakkabı': {
+        columns: [ { title: 'Markalar', links: [ {text: 'Prada', link:'#'}, {text: 'Louboutin', link:'#'} ] } ],
+        promos: []
+      }
+    },
+    'Wellness & Kişisel Bakım': {
+      // // Örnek olarak dolduruldu
+      'Cilt Bakımı': {
+        columns: [ { title: 'Nemlendirici', links: [ {text: 'Yüz Nemlendiricisi', link:'#'} ] } ],
+        promos: []
+      },
+      'Parfüm': {
+        columns: [ { title: 'Niş Parfüm', links: [ {text: 'Tüm Niş Parfümler', link:'#'} ] } ],
+        promos: []
+      }
+    },
+'Öne Çıkan Markalar': {
+      columns: [
+        // Sütun 1 (5 marka)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Beymen', link: '#' },
+            { text: 'Bottega Veneta', link: '#' },
+            { text: 'Valentino Garavani', link: '#' },
+            { text: 'McQueen', link: '#' },
+            { text: 'Polo Ralph Lauren', link: '#' },
+          ] 
+        },
+        // Sütun 2 (5 marka)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Beymen Club', link: '#' },
+            { text: 'Golden Goose', link: '#' },
+            { text: 'Tory Burch', link: '#' },
+            { text: 'Beymen Collection', link: '#' },
+            { text: 'Academia', link: '#' },
+          ] 
+        }
+      ],
+      promos: [] // Promosyon yok
+    },
+  },
+
+
+
+
+  'Erkek': {
+    // // Yeni sıralamana göre sol menü başlıkları:
+'Giyim': {
+      columns: [
+        // === 1. GRUP: ALT KATEGORİLERİ OLANLAR (Aynen kalır) ===
+        { 
+          title: 'Dış Giyim', 
+          links: [ 
+            { text: 'Mont', link: '#' }, { text: 'Deri Mont', link: '#' }, { text: 'Kaban', link: '#' }, 
+            { text: 'Parka', link: '#' }, { text: 'Spor Yelek', link: '#' }, { text: 'Pardösü', link: '#' }, 
+            { text: 'Palto', link: '#' }, { text: 'Yağmurluk', link: '#' }, { text: 'Tüm Dış Giyim ►', link: '#' }
+          ] 
+        },
+        {
+          title: 'Triko & Kazak', 
+          links: [
+            { text: 'Triko', link: '#' }, { text: 'Kazak', link: '#' }, { text: 'Hırka', link: '#' },
+            { text: 'Tüm Triko & Kazak ►', link: '#' }
+          ]
+        },
+        {
+          title: 'Gömlek', 
+          links: [
+            { text: 'Jean Gömlek', link: '#' }, { text: 'Tüm Gömlek ►', link: '#' }
+          ]
+        },
+        {
+          title: 'Ceket', 
+          links: [
+            { text: 'Klasik Ceket', link: '#' }, { text: 'Blazer', link: '#' }, { text: 'Spor Ceket', link: '#' },
+            { text: 'Klasik Yelek', link: '#' }, { text: 'Tüm Ceket ►', link: '#' }
+          ]
+        },
+        {
+          title: 'Spor Giyim', 
+          links: [
+            { text: 'Spor T-shirt', link: '#' }, { text: 'Eşofman Altı', link: '#' },
+            { text: 'Tüm Spor Giyim ►', link: '#' }
+          ]
+        },
+
+        // === 2. GRUP: ALT LİNKİ OLMAYANLAR (links: [] DOLDURULDU) ===
+        { 
+          title: 'T-Shirt', 
+          links: [{ text: 'Tüm T-Shirt ►', link: '#' }] // // Dolduruldu
+        },
+        { 
+          title: 'Sweatshirt', 
+          links: [{ text: 'Tüm Sweatshirt ►', link: '#' }] // // Dolduruldu
+        },
+        { 
+          title: 'Polo Yaka T-Shirt', 
+          links: [{ text: 'Tüm Polo Yaka T-Shirt ►', link: '#' }] // // Dolduruldu
+        },
+        { 
+          title: 'Pantolon', 
+          links: [{ text: 'Tüm Pantolon ►', link: '#' }] // // Dolduruldu
+        }, 
+        { 
+          title: 'Jean Pantolon', 
+          links: [{ text: 'Tüm Jean Pantolon ►', link: '#' }] // // Dolduruldu
+        },
+        { 
+          title: 'Takım Elbise', 
+          links: [{ text: 'Tüm Takım Elbise ►', link: '#' }] // // Dolduruldu
+        }
+      ],
+      promos: [
+        { img: 'https://picsum.photos/200/100?image=201', title: 'Erkek Yeni Sezon', link: '#' },
+        { img: 'https://picsum.photos/200/100?image=202', title: 'Erkek İndirim', link: '#' }
+      ]
+    },
+
+
+
+    
+'Ayakkabı': {
+      columns: [
+        // Sütun 1 (5 link)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Sneaker', link: '#' },
+            { text: 'Klasik Ayakkabı', link: '#' },
+            { text: 'Bot', link: '#' },
+            { text: 'Espadril', link: '#' },
+            { text: 'Loafer', link: '#' },
+          ] 
+        },
+        // Sütun 2 (4 link)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Driver', link: '#' },
+            { text: 'Sandalet', link: '#' },
+            { text: 'Terlik', link: '#' },
+            { text: 'Smokin Ayakkabısı', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=203', title: 'Yeni Sezon Ayakkabı', link: '#' }
+      ]
+    },
+
+
+'Çanta': {
+      // // 7 linki 2 sütuna böldük (4+3)
+      columns: [
+        // Sütun 1 (4 link)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Sırt Çantası', link: '#' },
+            { text: 'Bavul', link: '#' },
+            { text: 'Evrak Çantası', link: '#' },
+            { text: 'Bel Çantası', link: '#' },
+          ] 
+        },
+        // Sütun 2 (3 link)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Omuz Çantası', link: '#' },
+            { text: 'Tıraş Çantası', link: '#' },
+            { text: 'El Portföyü', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Çanta için de promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=204', title: 'Yeni Sezon Çantalar', link: '#' }
+      ]
+    },
+
+
+    'Aksesuar': {
+      // // Eski 'Erkek Aksesuar' içeriğini buraya taşıdık
+      columns: [ { title: 'Kemer', links: [ {text: 'Deri Kemer', link: '#'} ] }, { title: 'Güneş Gözlüğü', links: [ {text: 'Tüm Gözlükler', link: '#'} ] } ],
       promos: []
     },
-    'Aksesuar': { columns: [ { title: 'Takı', links: [ {text: 'Kolye', link: '#'} ] } ], promos: [] },
-    'Reborn - Lüks İkinci El': { columns: [ { title: 'Lüks Çanta', links: [ {text: 'Tüm Çantalar', link: '#'} ] } ], promos: [] },
-    'Wellness & Kişisel Bakım': { columns: [ { title: 'Cilt Bakımı', links: [ {text: 'Nemlendirici', link: '#'} ] } ], promos: [] },
-    'Öne Çıkan Markalar': { columns: [ { title: 'Markalar', links: [ {text: 'Gucci', link: '#'}, {text: 'Prada', link: '#'} ] } ], promos: [] },
-  },
-  'Erkek': {
-    'Erkek Giyim': {
-      columns: [ { title: 'T-Shirt', links: [ {text: 'Polo Yaka', link:'#'}, {text: 'Basic', link:'#'}, {text: 'Tüm T-Shirt ►', link: '#'} ] }, { title: 'Gömlek', links: [ {text: 'Klasik Gömlek', link:'#'}, {text: 'Spor Gömlek', link:'#'}, {text: 'Tüm Gömlek ►', link: '#'} ] }, { title: 'Pantolon', links: [ {text: 'Jean Pantolon', link:'#'}, {text: 'Spor Pantolon', link:'#'}, {text: 'Tüm Pantolon ►', link: '#'} ] }, { title: 'Dış Giyim', links: [ {text: 'Mont', link:'#'}, {text: 'Ceket', link:'#'}, {text: 'Tüm Dış Giyim ►', link: '#'} ] } ],
-      promos: [ { img: 'https://picsum.photos/200/100?image=201', title: 'Erkek Yeni Sezon', link: '#' }, { img: 'https://picsum.photos/200/100?image=202', title: 'Erkek İndirim', link: '#' } ]
+    'Reborn - Lüks İkinci El': {
+      // // Yeni eklendi (içi boş)
+      columns: [
+        { title: 'Erkek Lüks Saat', links: [{text: 'Tüm Saatler', link: '#'}] }
+      ],
+      promos: []
     },
-    'Erkek Ayakkabı': {
-      columns: [ { title: 'Sneaker', links: [ {text: 'Tüm Sneakerlar', link: '#'} ] }, { title: 'Bot', links: [ {text: 'Deri Bot', link: '#'} ] } ],
-      promos: [ { img: 'https://picsum.photos/200/100?image=203', title: 'Yeni Sezon Botlar', link: '#' } ]
+    'Hobi & Eğlence': {
+      // // Yeni eklendi (içi boş)
+      columns: [
+        { title: 'Ses Sistemleri', links: [{text: 'Kulaklık', link: '#'}] }
+      ],
+      promos: []
     },
-    'Erkek Aksesuar': { columns: [ { title: 'Kemer', links: [ {text: 'Deri Kemer', link: '#'} ] } ], promos: [] },
-    'Bakım': { columns: [ { title: 'Parfüm', links: [ {text: 'Tüm Parfümler', link: '#'} ] } ], promos: [] }
+    'Öne Çıkan Markalar': {
+      // // Yeni eklendi (içi boş)
+      columns: [
+        { title: 'Popüler Markalar', links: [{text: 'Nike', link: '#'}, {text: 'Adidas', link: '#'}] }
+      ],
+      promos: []
+    }
+    // // 'Bakım' kategorisi yeni listende olmadığı için kaldırıldı
   },
-  'Kozmetik/BBS': { 'Parfüm': { columns: [ { title: 'Parfüm', links: [ {text: 'Kadın Parfüm', link:'#'}, {text: 'Erkek Parfüm', link:'#'} ] } ], promos: [ { img: 'https://picsum.photos/200/100?image=301', title: 'Çok Satan Parfümler', link: '#' } ] }, 'Makyaj': { columns: [ { title: 'Makyaj', links: [ {text: 'Yüz', link:'#'}, {text: 'Göz', link:'#'} ] } ], promos: [] } },
-  'Ev & Yaşam': { 'Sofra': { columns: [ { title: 'Sofra', links: [ {text: 'Yemek Takımları', link:'#'} ] } ], promos: [] } },
-  'Çocuk': { 'Kız Çocuk': { columns: [ { title: 'Kız Çocuk Giyim', links: [ {text: 'Elbise', link:'#'} ] } ], promos: [] } },
-  'Anne & Bebek & Oyuncak': { 'Bebek Giyim': { columns: [ { title: 'Bebek Giyim', links: [ {text: 'Zıbın', link:'#'} ] } ], promos: [] } },
-  'Teknoloji': { 'Giyilebilir Teknoloji': { columns: [ { title: 'Giyilebilir', links: [ {text: 'Akıllı Saat', link:'#'} ] } ], promos: [] } },
-  'Spor & Outdoor': { 'Spor Giyim': { columns: [ { title: 'Spor Giyim', links: [ {text: 'Tayt', link:'#'} ] } ], promos: [] } },
-  'Outlet': { 'Kadın Outlet': { columns: [ { title: 'Kadın Giyim', links: [ {text: 'Elbise', link:'#'} ] } ], promos: [] } },
-  'Reborn': { 'Lüks Çanta': { columns: [ { title: 'Markalar (Çanta)', links: [ {text: 'Chanel', link:'#'} ] } ], promos: [] } },
+  
+  
+  
+  'Kozmetik/BBS': {
+    'Parfüm': {
+      columns: [ { title: 'Parfüm', links: [ {text: 'Kadın Parfüm', link:'#'}, {text: 'Erkek Parfüm', link:'#'} ] } ],
+      promos: [ { img: 'https://picsum.photos/200/100?image=301', title: 'Çok Satan Parfümler', link: '#' } ]
+    },
+    'Makyaj': {
+      columns: [ { title: 'Makyaj', links: [ {text: 'Yüz', link:'#'}, {text: 'Göz', link:'#'} ] } ],
+      promos: []
+    }
+  },
+  'Ev & Yaşam': {
+    'Sofra': {
+      columns: [ { title: 'Sofra', links: [ {text: 'Yemek Takımları', link:'#'} ] } ],
+      promos: []
+    }
+  },
+  'Çocuk': {
+    'Kız Çocuk': {
+      columns: [ { title: 'Kız Çocuk Giyim', links: [ {text: 'Elbise', link:'#'} ] } ],
+      promos: []
+    }
+  },
+  'Anne & Bebek & Oyuncak': {
+    'Bebek Giyim': {
+      columns: [ { title: 'Bebek Giyim', links: [ {text: 'Zıbın', link:'#'} ] } ],
+      promos: []
+    }
+  },
+  'Teknoloji': {
+    'Giyilebilir Teknoloji': {
+      columns: [ { title: 'Giyilebilir', links: [ {text: 'Akıllı Saat', link:'#'} ] } ],
+      promos: []
+    }
+  },
+  'Spor & Outdoor': {
+    'Spor Giyim': {
+      columns: [ { title: 'Spor Giyim', links: [ {text: 'Tayt', link:'#'} ] } ],
+      promos: []
+    }
+  },
+  'Outlet': {
+    'Kadın Outlet': {
+      columns: [ { title: 'Kadın Giyim', links: [ {text: 'Elbise', link:'#'} ] } ],
+      promos: []
+    }
+  },
+  'Reborn': {
+    'Lüks Çanta': {
+      columns: [ { title: 'Markalar (Çanta)', links: [ {text: 'Chanel', link:'#'} ] } ],
+      promos: []
+    }
+  },
 });
-
 
 // --- MEGA MENÜ STATE VE LOGIC (Değişiklik yok) ---
 const activeCategory = ref(null); 
@@ -250,31 +613,6 @@ const currentContentData = computed(() => {
 </script>
 
 <style scoped>
-/* Mega menü stilleri (Değişiklik yok) */
-.mega-menu-side-link {
-  display: block;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  color: #212529;
-  text-decoration: none;
-  font-weight: 600;
-  white-space: nowrap;
-  border-bottom: 1px solid #f8f9fa;
-  border-left: 3px solid transparent;
-  padding-left: calc(1rem - 3px);
-  transition: all 0.1s ease-in-out;
-}
-.mega-menu-side-link:hover,
-li.active .mega-menu-side-link {
-  color: #000;
-  background-color: #f8f9fa;
-  border-left: 3px solid #40579e; /* Beymen mavisi */
-}
-li.active .mega-menu-side-link i {
-  display: none;
-}
-
-/* Genel stiller (Değişiklik yok) */
 header.sticky-top {
     z-index: 1020;
     background-color: white;
@@ -314,7 +652,7 @@ hr {
 .top-link {
     color: #555 !important;
     font-size: 0.7rem;
-    padding: 0 0.6rem !important;
+    padding: 0 0.6rem !important; /* DÜZELTİLDİ */
     text-transform: uppercase;
     text-decoration: none;
 }
@@ -332,35 +670,34 @@ hr {
     color: #40579e;
     font-weight: 700;
 }
-
-/* ===== DEĞİŞİKLİK BURADA: .icon-item kuralı güncellendi ===== 
-  Dropdown için eklenen 'justify-content' kuralı kaldırıldı,
-  çünkü <BNavItem> linkleri için buna gerek yok.
-*/
 .icon-group .icon-item {
     margin-left: 1.5rem;
     padding: 0 !important;
     cursor: pointer;
     text-decoration: none;
-    color: #333;
+    color: #333 !important;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .icon-group .icon-item:hover {
-    color: #000;
+    color: #000 !important;
 }
 .icon-text {
     font-size: 0.7rem;
-    color: #333;
+    color: #333 !important;
     white-space: nowrap;
 }
 .icon-group .icon-item i {
     font-size: 1.4rem;
     margin-bottom: 0.1rem;
     display: block;
+    color: #333 !important;
+}
+.icon-group .icon-item:hover i,
+.icon-group .icon-item:hover .icon-text {
+    color: #000 !important;
 }
 .cart-badge {
     font-size: 0.6rem;
@@ -369,6 +706,8 @@ hr {
 .category-bar {
     border-top: 1px solid #dee2e6;
     background-color: white;
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important; /* DÜZELTİLDİ (0 rem yerine 0.2rem) */
 }
 .category-link-wrapper {
     display: inline-flex;
@@ -397,7 +736,6 @@ hr {
     color: #1c1c1c !important;
     border-bottom: 2px solid #1c1c1c;
 }
-
 .mega-menu-container {
   top: 100%;
   left: 0;
@@ -420,6 +758,28 @@ hr {
     border-right: 1px solid #eee;
     padding-right: 0;
     padding-left: 0;
+}
+.mega-menu-side-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #212529;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 1px solid #f8f9fa;
+  border-left: 3px solid transparent;
+  padding-left: calc(1rem - 3px);
+  transition: all 0.1s ease-in-out;
+}
+.mega-menu-side-link:hover,
+li.active .mega-menu-side-link {
+  color: #000;
+  background-color: #f8f9fa;
+  border-left: 3px solid #40579e;
+}
+li.active .mega-menu-side-link i {
+  display: none;
 }
 .mega-menu-column {
     padding-left: 1.5rem;
@@ -468,10 +828,4 @@ hr {
   font-weight: 500;
   text-align: center;
 }
-
-/* ===== DEĞİŞİKLİK BURADA: DROPDOWN STILLERI SİLİNDİ ===== */
-/* Burada daha önce yer alan .icon-item :deep(...) 
-  ile başlayan stil blokları, artık <BDropdown> 
-  kullanılmadığı için kaldırıldı.
-*/
 </style>
