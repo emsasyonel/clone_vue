@@ -475,11 +475,38 @@ const megaMenuData = ref({
     },
 
 
-    'Aksesuar': {
-      // // Eski 'Erkek Aksesuar' içeriğini buraya taşıdık
-      columns: [ { title: 'Kemer', links: [ {text: 'Deri Kemer', link: '#'} ] }, { title: 'Güneş Gözlüğü', links: [ {text: 'Tüm Gözlükler', link: '#'} ] } ],
-      promos: []
+'Aksesuar': {
+      // // 11 linki 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1 (6 link)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Kol Saati', link: '#' },
+            { text: 'Güneş Gözlüğü', link: '#' },
+            { text: 'Şapka', link: '#' },
+            { text: 'Cüzdan', link: '#' },
+            { text: 'Kemer', link: '#' },
+            { text: 'Kartlık/Kartvizitlik', link: '#' },
+          ] 
+        },
+        // Sütun 2 (5 link)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Atkı & Bere & Eldiven', link: '#' },
+            { text: 'Çorap', link: '#' },
+            { text: 'Takı', link: '#' },
+            { text: 'Kol Düğmesi', link: '#' },
+            { text: 'Kravat & Poşet Mendil', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Aksesuar için de promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=205', title: 'Yeni Sezon Aksesuarlar', link: '#' }
+      ]
     },
+
     'Reborn - Lüks İkinci El': {
       // // Yeni eklendi (içi boş)
       columns: [
@@ -494,70 +521,2241 @@ const megaMenuData = ref({
       ],
       promos: []
     },
-    'Öne Çıkan Markalar': {
-      // // Yeni eklendi (içi boş)
+
+    
+'Öne Çıkan Markalar': {
+      // // 11 markayı 2 sütuna böldük (6+5)
       columns: [
-        { title: 'Popüler Markalar', links: [{text: 'Nike', link: '#'}, {text: 'Adidas', link: '#'}] }
+        // Sütun 1 (6 marka)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'McQueen', link: '#' },
+            { text: 'Polo Ralph Lauren', link: '#' },
+            { text: 'Beymen Collection', link: '#' },
+            { text: 'Dolce&Gabbana', link: '#' },
+            { text: 'AllSaints', link: '#' },
+            { text: 'Valentino Garavani', link: '#' },
+          ] 
+        },
+        // Sütun 2 (5 marka)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Etro', link: '#' },
+            { text: 'Academia', link: '#' },
+            { text: 'Beymen Club', link: '#' },
+            { text: 'Network', link: '#' },
+            { text: 'Giorgio Armani', link: '#' },
+          ] 
+        }
+      ],
+      promos: [] // Promosyon yok
+    }
+  },
+  
+  
+'Kozmetik/BBS': {
+    // // Yeni sol menü sıralamana göre güncellendi
+
+
+'Makyaj': {
+      columns: [
+        // Sütun 1: Yüz Makyajı
+        {
+          title: 'Yüz Makyajı',
+          links: [
+            { text: 'Allık', link: '#' },
+            { text: 'Aydınlatıcı / Highlighter', link: '#' },
+            { text: 'BB/CC Krem', link: '#' },
+            { text: 'Fondöten', link: '#' },
+            { text: 'Kapatıcı', link: '#' },
+            { text: 'Makyaj Bazı / Sabitleyiciler', link: '#' },
+            { text: 'Pudra', link: '#' },
+            { text: 'Tüm Yüz Makyajı ►', link: '#' }
+          ]
+        },
+        // Sütun 2: Dudak Makyajı
+        {
+          title: 'Dudak Makyajı',
+          links: [
+            { text: 'Dudak Kalemi', link: '#' },
+            { text: 'Dudak Parlatıcısı', link: '#' },
+            { text: 'Ruj', link: '#' },
+            { text: 'Tüm Dudak Makyajı ►', link: '#' }
+          ]
+        },
+        // Sütun 3: Göz Makyajı
+        {
+          title: 'Göz Makyajı',
+          links: [
+            { text: 'Eyeliner', link: '#' },
+            { text: 'Göz Farı', link: '#' },
+            { text: 'Göz Kalemi', link: '#' },
+            { text: 'Kaş Kalemi', link: '#' },
+            { text: 'Kaş Maskarası', link: '#' },
+            { text: 'Maskara / Rimel', link: '#' },
+            { text: 'Tüm Göz Makyajı ►', link: '#' }
+          ]
+        },
+        // Sütun 4: Tırnak
+        {
+          title: 'Tırnak',
+          links: [
+            { text: 'Oje', link: '#' },
+            { text: 'Törpü / Manikür Aletleri', link: '#' },
+            { text: 'Tüm Tırnak ►', link: '#' }
+          ]
+        },
+        // Sütun 5: Makyaj Aksesuarı
+        {
+          title: 'Makyaj Aksesuarı',
+          links: [
+            { text: 'Geçici Dövme', link: '#' },
+            { text: 'Diğer Makyaj Aksesuarları', link: '#' },
+            { text: 'Makyaj Çantaları', link: '#' },
+            { text: 'Makyaj Fırça / Sünger', link: '#' },
+            { text: 'Tüm Makyaj Aksesuarı ►', link: '#' }
+          ]
+        }
+      ],
+      promos: [ // Makyaj için promosyonlar
+        { img: 'https://picsum.photos/200/100?image=302', title: 'Yeni Sezon Makyaj', link: '#' }
+      ]
+    },
+
+'Cilt Bakımı': {
+      columns: [
+        // // Sütun 1: Başlıksız Ana Kategoriler
+        { 
+          title: 'Cilt Bakım Setleri', // Başlık yok
+          links: [
+            { text: 'Cilt Bakım Setleri', link: '#' },
+            { text: 'Yüz Kremi', link: '#' },
+            { text: 'Cilt Bakım Yağı', link: '#' },
+            { text: 'Cilt Serumu', link: '#' }
+          ] 
+        },
+        // // Sütun 2: Temizleyiciler
+        { 
+          title: 'Temizleyiciler', 
+          links: [
+            { text: 'Makyaj Temizleyiciler', link: '#' },
+            { text: 'Yüz Yıkama ve Temizleyiciler', link: '#' },
+            { text: 'Tonikler', link: '#' },
+            { text: 'Peeling', link: '#' },
+            { text: 'Tüm Temizleyiciler ►', link: '#' }
+          ] 
+        },
+        // // Sütun 3: Göz & Dudak Bakımı
+        { 
+          title: 'Göz & Dudak Bakımı', 
+          links: [
+            { text: 'Göz Kremi', link: '#' },
+            { text: 'Kaş Kirpik Bakımı', link: '#' },
+            { text: 'Dudak Bakımı', link: '#' },
+            { text: 'Dudak Kremi ve Peelingi', link: '#' },
+            { text: 'Göz Serumu', link: '#' },
+            { text: 'Tüm Göz & Dudak Bakımı ►', link: '#' }
+          ] 
+        },
+        // // Sütun 4: Bakım Ürünleri
+        { 
+          title: 'Bakım Ürünleri', 
+          links: [
+            { text: 'Antiaging', link: '#' },
+            { text: 'Yüz Maskeleri', link: '#' },
+            { text: 'Onarıcı', link: '#' },
+            { text: 'Yüz Bakım Yağı', link: '#' },
+            { text: 'Boyun Dekolte Kremi', link: '#' },
+            { text: 'Tüm Bakım Ürünleri ►', link: '#' }
+          ] 
+        },
+        // // Sütun 5: Cihazlar
+        { 
+          title: 'Cilt Temizleme & Bakım Cihazları', 
+          links: [
+            { text: 'Cilt Bakım Cihazı', link: '#' },
+            { text: 'Cilt temizleme cihaz', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları güncelleyelim
+        { img: 'https://picsum.photos/200/100?image=304', title: 'Cilt Bakım Setleri', link: '#' },
+        { img: 'https://picsum.photos/200/100?image=306', title: 'Güneş Koruması', link: '#' }
+      ]
+    },
+
+
+'Parfüm': {
+      // // 6 linki 2 sütuna böldük (3+3)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Erkek Parfüm', link: '#' },
+            { text: 'Kadın Parfüm', link: '#' },
+            { text: 'Parfüm Setleri', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Deodorant', link: '#' },
+            { text: 'Kolonya', link: '#' },
+            { text: 'ÇOK SATANLAR', link: '#' }, // Bu linki de ekledik
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=301', title: 'Çok Satan Parfümler', link: '#' }
+      ]
+    },
+
+'Saç Bakımı': {
+      columns: [
+        // Sütun 1: Başlıksız (Ana Kategoriler 1)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Şampuanlar', link: '#' },
+            { text: 'Saç Kremleri', link: '#' },
+            { text: 'Saç Fırça/Tarak', link: '#' },
+          ] 
+        },
+        // Sütun 2: Başlıksız (Ana Kategoriler 2)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Saç Bakım Ürünleri', link: '#' },
+            { text: 'Saç Bakım Setleri', link: '#' },
+            { text: 'Saç Maskesi', link: '#' },
+            { text: 'Saç Toniği', link: '#' },
+          ] 
+        },
+        // Sütun 3: Başlıklı (Saç Şekillendiriciler)
+        { 
+          title: 'Saç Şekillendiriciler', 
+          links: [
+            { text: 'Briyantin- Jöle', link: '#' },
+            { text: 'Saç Spreyi /Köpüğü', link: '#' },
+            { text: 'Tüm Saç Şekillendiriciler ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Saç bakımı için de promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=307', title: 'Popüler Saç Bakım Ürünleri', link: '#' }
+      ]
+    },
+
+
+    'Korean Beauty': {
+      columns: [ 
+        { title: 'Maske', links: [ {text: 'Kağıt Maske', link:'#'} ] },
+        { title: 'Serum', links: [ {text: 'K-Beauty Serumları', link:'#'} ] }
+      ],
+      promos: [ { img: 'https://picsum.photos/200/100?image=305', title: 'Kore Güzelliği', link: '#' } ]
+    },
+
+
+
+'Kişisel Bakım': {
+      columns: [
+        // Sütun 1: Ağız Bakımı
+        { 
+          title: 'Ağız Bakım', 
+          links: [
+            { text: 'Tüm Ağız Bakım ►', link: '#' } // // Listen tek öğeydi, "Tüm..." linki ekledim
+          ] 
+        },
+        // Sütun 2: Vücut Bakımı
+        { 
+          title: 'Vücut Bakımı', 
+          links: [
+            { text: 'Nemlendirici Krem/Losyon', link: '#' },
+            { text: 'Antiselülit', link: '#' },
+            { text: 'Göğüs Kremi', link: '#' },
+            { text: 'Sıkılaştırıcı', link: '#' },
+            { text: 'Masaj Yağları/Kremleri', link: '#' },
+            { text: 'Vücut Spreyi/Pudra', link: '#' },
+            { text: 'Tüm Vücut Bakımı ►', link: '#' }
+          ] 
+        },
+        // Sütun 3: Banyo Duş
+        { 
+          title: 'Banyo Duş', 
+          links: [
+            { text: 'Duş Jeli-Köpüğü', link: '#' },
+            { text: 'Peeling', link: '#' },
+            { text: 'Sabun', link: '#' },
+            { text: 'Tüm Banyo Duş ►', link: '#' }
+          ] 
+        },
+        // Sütun 4: El & Ayak Bakımı
+        { 
+          title: 'El & Ayak Bakımı', 
+          links: [
+            { text: 'El Kremi', link: '#' },
+            { text: 'Ayak Kremi', link: '#' },
+            { text: 'Tırnak Bakımı', link: '#' },
+            { text: 'Tüm El & Ayak Bakımı ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=308', title: 'Vücut Bakım Fırsatları', link: '#' }
+      ]
+    },
+
+
+'Erkek Bakım Ürünleri': {
+      columns: [
+        // Sütun 1: Başlıksız (Ana Kategoriler)
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Erkek Bakım Seti', link: '#' },
+            { text: 'Erkek Cilt Bakımı', link: '#' },
+            { text: 'Vücut Banyo', link: '#' },
+            { text: 'Erkek Saç Bakımı', link: '#' },
+          ] 
+        },
+        // Sütun 2: Başlıklı (Tıraş Ürünleri)
+        { 
+          title: 'Tıraş Ürünleri', 
+          links: [
+            { text: 'Tıraş Kremi / Köpüğü', link: '#' },
+            { text: 'After Shave', link: '#' },
+            { text: 'Tıraş Takım/Fırça', link: '#' },
+            { text: 'Tüm Tıraş Ürünleri ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=309', title: 'Erkek Bakım Fırsatları', link: '#' }
+      ]
+    },
+
+
+
+'Güneş Koruyucular': {
+      columns: [
+        // // 3 linki tek bir sütuna topladık
+        { 
+          title: 'Güneş Bakımı', // // Bir başlık ekledik
+          links: [ 
+            { text: 'Güneş Kremi / Losyonu', link: '#' },
+            { text: 'Bronzlaştırıcılar', link: '#' },
+            { text: 'Güneş Sonrası Krem/Losyon', link: '#' },
+            { text: 'Tüm Güneş Ürünleri ►', link: '#' } // // Bir "Tüm" linki ekledik
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=310', title: 'Güneş Korumada Fırsatlar', link: '#' }
+      ]
+    },
+
+'Öne Çıkan Markalar': {
+      // // 11 markayı 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'CHANEL', link: '#' },
+            { text: 'Charlotte Tilbury', link: '#' },
+            { text: 'Tom Ford', link: '#' },
+            { text: 'Loewe', link: '#' },
+            { text: 'YSL - Yves Saint Laurent', link: '#' },
+            { text: 'Foreo', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Maison Francis Kurkdjian', link: '#' },
+            { text: 'Dolce&Gabbana', link: '#' },
+            { text: 'Hermès', link: '#' },
+            { text: 'Gucci', link: '#' },
+            { text: 'DR. Barbara Sturm', link: '#' },
+          ] 
+        }
+      ],
+      promos: [] // Promosyon yok
+    },
+
+'Beymen Beauty Mini': {
+      columns: [
+        // // 4 linki tek sütuna topladık
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Mini Boy Parfüm', link: '#' },
+            { text: 'Mini Boy Makyaj', link: '#' },
+            { text: 'Mini Boy Cilt Bakımı', link: '#' },
+            { text: 'Mini Boy Saç Bakımı', link: '#' },
+          ] 
+        }
+      ],
+      promos: [] // Promosyon yok
+    },
+
+    'Set Ürünler': {
+      columns: [ 
+        { title: 'Hediye Setleri', links: [ {text: 'Parfüm Setleri', link:'#'}, {text: 'Makyaj Setleri', link:'#'} ] }
       ],
       promos: []
-    }
-    // // 'Bakım' kategorisi yeni listende olmadığı için kaldırıldı
-  },
-  
-  
-  
-  'Kozmetik/BBS': {
-    'Parfüm': {
-      columns: [ { title: 'Parfüm', links: [ {text: 'Kadın Parfüm', link:'#'}, {text: 'Erkek Parfüm', link:'#'} ] } ],
-      promos: [ { img: 'https://picsum.photos/200/100?image=301', title: 'Çok Satan Parfümler', link: '#' } ]
     },
-    'Makyaj': {
-      columns: [ { title: 'Makyaj', links: [ {text: 'Yüz', link:'#'}, {text: 'Göz', link:'#'} ] } ],
-      promos: []
-    }
   },
-  'Ev & Yaşam': {
-    'Sofra': {
-      columns: [ { title: 'Sofra', links: [ {text: 'Yemek Takımları', link:'#'} ] } ],
+
+
+
+'Ev & Yaşam': {
+    // // Yeni sol menü sıralamana göre güncellendi
+    'Sofra & Mutfak': {
+      columns: [ 
+        { title: 'Sofra', links: [ {text: 'Yemek Takımları', link:'#'}, {text: 'Bardak Setleri', link:'#'} ] },
+        { title: 'Mutfak', links: [ {text: 'Pişirme Grubu', link:'#'}, {text: 'Hazırlama', link:'#'} ] }
+      ],
+      promos: [ { img: 'https://picsum.photos/200/100?image=401', title: 'Yeni Sofra Koleksiyonu', link: '#' } ]
+    },
+    'Ev Dekorasyon': {
+      columns: [ 
+        { title: 'Dekorasyon', links: [ {text: 'Vazo', link:'#'}, {text: 'Mumluk', link:'#'} ] }
+      ],
       promos: []
-    }
-  },
-  'Çocuk': {
-    'Kız Çocuk': {
-      columns: [ { title: 'Kız Çocuk Giyim', links: [ {text: 'Elbise', link:'#'} ] } ],
+    },
+    'Mobilya': {
+      columns: [ 
+        { title: 'Mobilya', links: [ {text: 'Sehpa', link:'#'}, {text: 'Sandalye', link:'#'} ] }
+      ],
       promos: []
-    }
-  },
-  'Anne & Bebek & Oyuncak': {
-    'Bebek Giyim': {
-      columns: [ { title: 'Bebek Giyim', links: [ {text: 'Zıbın', link:'#'} ] } ],
+    },
+    'Banyo': {
+      columns: [ 
+        { title: 'Banyo Tekstili', links: [ {text: 'Havlu', link:'#'}, {text: 'Bornoz', link:'#'} ] }
+      ],
       promos: []
-    }
-  },
-  'Teknoloji': {
-    'Giyilebilir Teknoloji': {
-      columns: [ { title: 'Giyilebilir', links: [ {text: 'Akıllı Saat', link:'#'} ] } ],
+    },
+    'Elektrik & Aydınlatma': {
+      columns: [ 
+        { title: 'Aydınlatma', links: [ {text: 'Aplik', link:'#'}, {text: 'Abajur', link:'#'} ] }
+      ],
       promos: []
-    }
-  },
-  'Spor & Outdoor': {
-    'Spor Giyim': {
-      columns: [ { title: 'Spor Giyim', links: [ {text: 'Tayt', link:'#'} ] } ],
+    },
+    'Ev Tekstili': {
+      columns: [ 
+        { title: 'Yatak Odası', links: [ {text: 'Nevresim Takımı', link:'#'}, {text: 'Yastık', link:'#'} ] }
+      ],
       promos: []
-    }
-  },
-  'Outlet': {
-    'Kadın Outlet': {
-      columns: [ { title: 'Kadın Giyim', links: [ {text: 'Elbise', link:'#'} ] } ],
+    },
+    'Hobi & Eğlence': {
+      columns: [ 
+        { title: 'Hobi', links: [ {text: 'Puzzle', link:'#'}, {text: 'Müzik', link:'#'} ] }
+      ],
       promos: []
-    }
-  },
-  'Reborn': {
-    'Lüks Çanta': {
-      columns: [ { title: 'Markalar (Çanta)', links: [ {text: 'Chanel', link:'#'} ] } ],
+    },
+    'Petshop': {
+      columns: [ 
+        { title: 'Kedi', links: [ {text: 'Kedi Maması', link:'#'} ] },
+        { title: 'Köpek', links: [ {text: 'Köpek Maması', link:'#'} ] }
+      ],
+      promos: [ { img: 'https://picsum.photos/200/100?image=402', title: 'Patili Dostlar', link: '#' } ]
+    },
+    'Gıda & İçecek': {
+      columns: [ 
+        { title: 'İçecek', links: [ {text: 'Kahve', link:'#'}, {text: 'Çay', link:'#'} ] }
+      ],
       promos: []
-    }
+    },
+    'Kitap & Kırtasiye': {
+      columns: [ 
+        { title: 'Kitap', links: [ {text: 'Sanat Kitapları', link:'#'} ] },
+        { title: 'Kırtasiye', links: [ {text: 'Defter', link:'#'} ] }
+      ],
+      promos: []
+    },
+    'Öne Çıkan Markalar': {
+      columns: [ 
+        { title: '', links: [ {text: 'Fornasetti', link:'#'}, {text: 'Baobab Collection', link:'#'} ] }
+      ],
+      promos: []
+    },
   },
+
+
+'Çocuk': {
+    // // Yeni sol menü sıralamana göre güncellendi
+
+
+'Kız Bebek': {
+      columns: [
+        // Sütun 1
+        { 
+          title: 'Dış Giyim', 
+          links: [ { text: 'Tüm Dış Giyim ►', link: '#' } ] // Tekil olduğu için "Tüm" linki ekledim
+        },
+        {
+          title: 'Kazak & Hırka', 
+          links: [
+            { text: 'Kazak', link: '#' },
+            { text: 'Hırka', link: '#' },
+            { text: 'Tüm Kazak & Hırka ►', link: '#' }
+          ]
+        },
+        { 
+          title: 'T-shirt & Sweatshirt', 
+          links: [ { text: 'Tüm T-shirt & Sweatshirt ►', link: '#' } ] // Tekil olduğu için "Tüm" linki ekledim
+        },
+        
+        // Sütun 2
+        {
+          title: 'Tulum & Body', 
+          links: [
+            { text: 'Body', link: '#' },
+            { text: 'Tulum', link: '#' },
+            { text: 'Tüm Tulum & Body ►', link: '#' }
+          ]
+        },
+        { 
+          title: 'Elbise', 
+          links: [ { text: 'Tüm Elbise ►', link: '#' } ] // Tekil olduğu için "Tüm" linki ekledim
+        },
+        {
+          title: 'Gömlek & Bluz', 
+          links: [
+            { text: 'Bluz', link: '#' },
+            { text: 'Tüm Gömlek & Bluz ►', link: '#' }
+          ]
+        },
+
+        // Sütun 3
+        {
+          title: 'Set Ürünler', 
+          links: [
+            { text: 'İkili Set', link: '#' },
+            { text: 'Hastane Çıkışı', link: '#' },
+            { text: 'Tüm Set Ürünler ►', link: '#' }
+          ]
+        },
+        {
+          title: 'Pantolon & Şort', 
+          links: [
+            { text: 'Tayt', link: '#' },
+            { text: 'Şort', link: '#' },
+            { text: 'Tüm Pantolon & Şort ►', link: '#' }
+          ]
+        },
+        
+        // Sütun 4
+        {
+          title: 'Aksesuar', 
+          links: [
+            { text: 'Müslin Bezi', link: '#' },
+            { text: 'Şapka', link: '#' },
+            { text: 'Tüm Aksesuar ►', link: '#' }
+          ]
+        },
+        { 
+          title: 'Eşofman', 
+          links: [ { text: 'Tüm Eşofman ►', link: '#' } ] // Tekil olduğu için "Tüm" linki ekledim
+        },
+        { 
+          title: 'Mayo', 
+          links: [ { text: 'Tüm Mayo ►', link: '#' } ] // Tekil olduğu için "Tüm" linki ekledim
+        }
+      ],
+      promos: [ 
+        { img: 'https://picsum.photos/200/100?image=501', title: 'Kız Bebek Yeni Sezon', link: '#' }
+      ]
+    },
+
+
+
+'Erkek Bebek': {
+      columns: [
+        // Sütun 1
+        { 
+          title: 'Dış Giyim', 
+          links: [ { text: 'Tüm Dış Giyim ►', link: '#' } ] 
+        },
+        {
+          title: 'Kazak & Hırka', 
+          links: [
+            { text: 'Kazak', link: '#' },
+            { text: 'Hırka', link: '#' },
+            { text: 'Tüm Kazak & Hırka ►', link: '#' }
+          ]
+        },
+
+        // Sütun 2
+        {
+          title: 'T-shirt & Sweatshirt', 
+          links: [
+            { text: 'T-shirt', link: '#' },
+            { text: 'Tüm T-shirt & Sweatshirt ►', link: '#' }
+          ]
+        },
+        {
+          title: 'Tulum & Body', 
+          links: [
+            { text: 'Body', link: '#' },
+            { text: 'Tulum', link: '#' },
+            { text: 'Tüm Tulum & Body ►', link: '#' }
+          ]
+        },
+
+        // Sütun 3
+        { 
+          title: 'Gömlek', 
+          links: [ { text: 'Tüm Gömlek ►', link: '#' } ] 
+        },
+        {
+          title: 'Set Ürünler', 
+          links: [
+            { text: 'İkili Set', link: '#' },
+            { text: 'Hastane Çıkışı', link: '#' },
+            { text: 'Tüm Set Ürünler ►', link: '#' }
+          ]
+        },
+        
+        // Sütun 4
+        { 
+          title: 'Pantolon & Şort', 
+          links: [ { text: 'Tüm Pantolon & Şort ►', link: '#' } ] 
+        },
+        {
+          title: 'Aksesuar', 
+          links: [
+            { text: 'Şapka', link: '#' },
+            { text: 'Müslin Bezi', link: '#' },
+            { text: 'Tüm Aksesuar ►', link: '#' }
+          ]
+        },
+        { 
+          title: 'Mayo', 
+          links: [ { text: 'Tüm Mayo ►', link: '#' } ] 
+        }
+      ],
+      promos: [ 
+        { img: 'https://picsum.photos/200/100?image=502', title: 'Erkek Bebek Yeni Sezon', link: '#' }
+      ]
+    },
+
+
+'Kız Çocuk': {
+      columns: [
+        // Sütun 1
+        { 
+          title: 'Dış Giyim', 
+          links: [ { text: 'Tüm Dış Giyim ►', link: '#' } ] 
+        },
+        {
+          title: 'Kazak & Hırka', 
+          links: [
+            { text: 'Kazak', link: '#' },
+            { text: 'Hırka', link: '#' },
+            { text: 'Ceket', link: '#' }, // Liste buradaydı, buraya ekledim
+            { text: 'Tüm Kazak & Hırka ►', link: '#' }
+          ]
+        },
+        { 
+          title: 'T-shirt & Sweatshirt', 
+          links: [ { text: 'Tüm T-shirt & Sweatshirt ►', link: '#' } ] 
+        },
+
+        // Sütun 2
+        {
+          title: 'Gömlek & Bluz', 
+          links: [
+            { text: 'Bluz', link: '#' },
+            { text: 'Tüm Gömlek & Bluz ►', link: '#' }
+          ]
+        },
+        {
+          title: 'Pantolon & Şort', 
+          links: [
+            { text: 'Şort', link: '#' },
+            { text: 'Tüm Pantolon & Şort ►', link: '#' }
+          ]
+        },
+        {
+          title: 'Eşofman & Tayt', 
+          links: [
+            { text: 'Tayt', link: '#' },
+            { text: 'Tüm Eşofman & Tayt ►', link: '#' }
+          ]
+        },
+
+        // Sütun 3
+        { 
+          title: 'Elbise', 
+          links: [ { text: 'Tüm Elbise ►', link: '#' } ] 
+        },
+        { 
+          title: 'Etek', 
+          links: [ { text: 'Tüm Etek ►', link: '#' } ] 
+        },
+        { 
+          title: 'Pijama', 
+          links: [ { text: 'Tüm Pijama ►', link: '#' } ] 
+        },
+        {
+          title: 'Tulum & Body', 
+          links: [
+            { text: 'Tulum', link: '#' },
+            { text: 'Tüm Tulum & Body ►', link: '#' }
+          ]
+        },
+        
+        // Sütun 4
+        {
+          title: 'Aksesuar', 
+          links: [
+            { text: 'Şapka', link: '#' },
+            { text: 'Güneş Gözlüğü', link: '#' },
+            { text: 'Tüm Aksesuar ►', link: '#' }
+          ]
+        }
+      ],
+      promos: [ 
+        { img: 'https://picsum.photos/200/100?image=503', title: 'Kız Çocuk Yeni Sezon', link: '#' }
+      ]
+    },
+
+
+    
+'Erkek Çocuk': {
+      columns: [
+        // Sütun 1
+        { 
+          title: 'Dış Giyim', 
+          links: [ { text: 'Tüm Dış Giyim ►', link: '#' } ] 
+        },
+        {
+          title: 'Kazak & Hırka', 
+          links: [
+            { text: 'Hırka', link: '#' },
+            { text: 'Tüm Kazak & Hırka ►', link: '#' }
+          ]
+        },
+        {
+          title: 'T-shirt & Sweatshirt', 
+          links: [
+            { text: 'T-Shirt', link: '#' },
+            { text: 'Sweatshirt', link: '#' },
+            { text: 'Tüm T-shirt & Sweatshirt ►', link: '#' }
+          ]
+        },
+
+        // Sütun 2
+        { 
+          title: 'Gömlek', 
+          links: [ { text: 'Tüm Gömlek ►', link: '#' } ] 
+        },
+        { 
+          title: 'Pantolon & Şort', 
+          links: [ { text: 'Tüm Pantolon & Şort ►', link: '#' } ] 
+        },
+        { 
+          title: 'Eşofman', 
+          links: [ { text: 'Tüm Eşofman ►', link: '#' } ] 
+        },
+        
+        // Sütun 3
+        {
+          title: 'Aksesuar', 
+          links: [
+            { text: 'Giyim Aksesuar', link: '#' },
+            { text: 'Şapka', link: '#' },
+            { text: 'Güneş Gözlüğü', link: '#' },
+            { text: 'Boyunluk', link: '#' },
+            { text: 'Tüm Aksesuar ►', link: '#' }
+          ]
+        },
+        { 
+          title: 'Pijama', 
+          links: [ { text: 'Tüm Pijama ►', link: '#' } ] 
+        },
+
+        // Sütun 4
+        { 
+          title: 'Takım Elbise', 
+          links: [ { text: 'Tüm Takım Elbise ►', link: '#' } ] 
+        },
+        { 
+          title: 'Eşofman Takımı', 
+          links: [ { text: 'Tüm Eşofman Takımı ►', link: '#' } ] 
+        },
+        {
+          title: 'Plaj Grubu', 
+          links: [
+            { text: 'Deniz Şortu', link: '#' },
+            { text: 'Mayo', link: '#' }, // // HATA BURADA DÜZELTİLDİ (text:t: yerine text:)
+            { text: 'Plaj Havlu', link: '#' },
+            { text: 'Tüm Plaj Grubu ►', link: '#' }
+          ]
+        }
+      ],
+      promos: [ 
+        { img: 'https://picsum.photos/200/100?image=504', title: 'Erkek Çocuk Yeni Sezon', link: '#' }
+      ]
+    }, // <-- Bu virgül, 'Ayakkabı & Çanta'dan önce geldiği için kalmalı.
+
+    
+'Ayakkabı & Çanta': {
+      // // 9 linki 2 sütuna böldük (5+4)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Bot', link: '#' },
+            { text: 'Sneaker', link: '#' },
+            { text: 'Sandalet & Terlik', link: '#' },
+            { text: 'Günlük Ayakkabı', link: '#' },
+            { text: 'Bebek Çantası', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Babet & Patik', link: '#' },
+            { text: 'Beslenme Çantası', link: '#' },
+            { text: 'Sırt Çantası', link: '#' },
+            { text: 'Bel Çantası', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+         { img: 'https://picsum.photos/200/100?image=505', title: 'Çocuk Ayakkabıları', link: '#' }
+      ]
+    },
+
+'Öne Çıkan Markalar': {
+      // // 9 markayı 2 sütuna böldük (5+4)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Moncler', link: '#' },
+            { text: 'Polo Ralph Lauren', link: '#' },
+            { text: 'Dolce&Gabbana', link: '#' },
+            { text: 'Golden Goose', link: '#' },
+            { text: 'Fendi', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Gucci', link: '#' },
+            { text: 'Off-White', link: '#' },
+            { text: 'Stella McCartney', link: '#' },
+            { text: 'Skechers', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+         { img: 'https://picsum.photos/200/100?image=506', title: 'Çocuk Markaları', link: '#' }
+      ]
+    },    
+  },
+
+
+'Anne & Bebek & Oyuncak': {
+    // // Yeni sol menü sıralamana göre güncellendi
+
+
+'Bebek Arabası & Oto Koltuğu': {
+      columns: [
+        // Sütun 1: Bebek Arabası & Puset
+        { 
+          title: 'Bebek Arabası & Puset', 
+          links: [ 
+            { text: 'Travel Sistem Bebek Arabası', link: '#' },
+            { text: 'Bebek Arabası', link: '#' },
+            { text: 'Kabin Boy Bebek Arabası', link: '#' },
+            { text: 'Ana Kucağı', link: '#' },
+            { text: 'Baston Puset', link: '#' },
+            { text: 'Bebek Arabası Aksesuar', link: '#' },
+            { text: 'İkiz Bebek Arabası', link: '#' },
+            { text: 'Tüm Bebek Arabası & Puset ►', link: '#' }
+          ] 
+        },
+        // Sütun 2: Bebek Oto Koltuğu
+        { 
+          title: 'Bebek Oto Koltuğu', 
+          links: [ 
+            { text: 'Bebek Oto Koltuğu Aksesua', link: '#' }, // Listenden aldım
+            { text: 'Tüm Oto Koltukları ►', link: '#' } // Ekstra "Tüm" linki
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=601', title: 'Bebek Arabaları', link: '#' }
+      ]
+    },
+
+
+'Oyuncak': {
+      columns: [
+        // // === 1. GRUP: ALT KATEGORİLERİ OLANLAR ===
+        { 
+          title: 'Oyuncak Araçlar', 
+          links: [ 
+            { text: 'Kumandalı Oyuncaklar', link: '#' },
+            { text: 'Oyuncak Arabalar', link: '#' },
+            { text: 'Oyuncak Helikopter ve Uçaklar', link: '#' },
+            { text: 'Oyuncak Kamyon ve İş Makineler', link: '#' },
+            { text: 'Oyuncak Otobüs ve Minibüsler', link: '#' },
+            { text: 'Oyuncak Tren ve Demiryolu', link: '#' },
+            { text: 'Tüm Oyuncak Araçlar ►', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Oyuncak Bebek', 
+          links: [ 
+            { text: 'Bez Bebek', link: '#' },
+            { text: 'Et Bebek', link: '#' },
+            { text: 'Model Bebek', link: '#' },
+            { text: 'Tüm Oyuncak Bebek ►', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Akülü & Pedallı Araçlar', 
+          links: [ 
+            { text: 'Çocuk Scooter', link: '#' },
+            { text: 'Çocuk Bisikleti', link: '#' },
+            { text: 'Akülü Araçlar', link: '#' },
+            { text: 'Pedallı Araçlar', link: '#' },
+            { text: 'Scooter Kask ve Aksesuarları', link: '#' },
+            { text: 'Yürüteç', link: '#' },
+            { text: 'Tüm Akülü & Pedallı Araçlar ►', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Bahçe & Dış Mekan Oyuncakları', 
+          links: [ 
+            { text: 'Plaj Oyuncakları', link: '#' },
+            { text: 'Top Havuzu ve Toplar', link: '#' },
+            { text: 'Kaydırak', link: '#' },
+            { text: 'Oyun Çadırı', link: '#' },
+            { text: 'Oyun Parkları', link: '#' },
+            { text: 'Spor Oyuncakları', link: '#' },
+            { text: 'Tüm Bahçe & Dış Mekan... ►', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Figür Oyuncaklar', 
+          links: [ 
+            { text: 'Hayvan Figür Oyuncaklar', link: '#' },
+            { text: 'Karakter Figür Oyuncaklar', link: '#' },
+            { text: 'Sürpriz Oyuncaklar Figürleri', link: '#' },
+            { text: 'Tüm Figür Oyuncaklar ►', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Bebek & Okul Öncesi Oyuncakları', 
+          links: [ 
+            { text: 'Ahşap Oyuncaklar', link: '#' },
+            { text: 'Eğitici Oyuncaklar', link: '#' },
+            { text: 'Yazı Tahtası', link: '#' },
+            { text: 'Banyo Oyuncakları', link: '#' },
+            { text: 'Bebek & Aktivite Oyuncakları', link: '#' },
+            { text: 'Dişlik ve Çıngıraklar', link: '#' },
+            { text: 'Dönence ve Projektör', link: '#' },
+            { text: 'Oyun Halısı', link: '#' },
+            { text: 'Puset & Mama Sandalyesi Oyuncağı', link: '#' },
+            { text: 'Sallanan Oyuncaklar', link: '#' },
+            { text: 'Uyku Arkadaşları', link: '#' },
+            { text: 'Tüm Bebek & Okul Öncesi... ►', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Oyun Setleri', 
+          links: [ 
+            { text: 'Evcilik ve Mutfak Setleri', link: '#' },
+            { text: 'Meslek Setleri', link: '#' },
+            { text: 'Müzik Oyuncakları', link: '#' },
+            { text: 'Oyuncak Bilim Setleri', link: '#' },
+            { text: 'Tüm Oyun Setleri ►', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Cinsiyete Göre', 
+          links: [ 
+            { text: 'Erkek Çocuk', link: '#' },
+            { text: 'Kız Çocuk', link: '#' },
+            { text: 'Unisex', link: '#' }
+          ] 
+        },
+
+        // // === 2. GRUP: TEKİL LİNKLER ("BOŞ" OLANLAR) ===
+        // // Bu başlıklar artık en sonda ve bir arada
+        { 
+          title: 'Çocuk Puzzle & Yapboz', 
+          links: [ { text: 'Tüm Puzzle ►', link: '#' } ]
+        },
+        { 
+          title: 'Peluş Oyuncaklar', 
+          links: [ { text: 'Tüm Peluş Oyuncaklar ►', link: '#' } ]
+        },
+        { 
+          title: 'Lego & Yapı Oyuncakları', 
+          links: [ { text: 'Tüm Lego & Yapı... ►', link: '#' } ]
+        }
+      ],
+      promos: [ // // Promosyonlar aynı kalır
+        { img: 'https://picsum.photos/200/100?image=602', title: 'Popüler Oyuncaklar', link: '#' }
+      ]
+    },
+
+'Anne ve Bebek Bakım': {
+      columns: [
+        // Sütun 1: Bebek Beslenme ve Emzirme
+        { 
+          title: 'Bebek Beslenme ve Emzirme', 
+          links: [ 
+            { text: 'Alıştırma Bardakları', link: '#' },
+            { text: 'Emzik', link: '#' },
+            { text: 'Biberon', link: '#' },
+            { text: 'Mama Sandalyesi', link: '#' },
+            { text: 'Mama Önlüğü', link: '#' },
+            { text: 'Bebek & Çocuk Sofra & Mutfak', link: '#' },
+            { text: 'Beslenme Aksesuarları', link: '#' },
+            { text: 'Biberon Emzik Temizleyici', link: '#' },
+            { text: 'Biberon Isıtıcı & Sterilizatör', link: '#' },
+            { text: 'Emzirme & Saklama Aksesuarları', link: '#' },
+            { text: 'Emzirme Örtüsü', link: '#' },
+            { text: 'Tüm Bebek Beslenme... ►', link: '#' }
+          ] 
+        },
+        // Sütun 2: Bebek Bakım ve Kozmetik
+        { 
+          title: 'Bebek Bakım ve Kozmetik', 
+          links: [ 
+            { text: 'Bebek Bakım Çantası', link: '#' },
+            { text: 'Bebek Bakım Örtüsü', link: '#' },
+            { text: 'Bebek Diş Fırçası', link: '#' },
+            { text: 'Bebek Diş Macunu', link: '#' },
+            { text: 'Bebek Fırça ve Tarağı', link: '#' },
+            { text: 'Bebek Güneş Ürünü', link: '#' },
+            { text: 'Bebek Kremi ve Yağı', link: '#' },
+            { text: 'Bebek Sağlık Ürünleri', link: '#' },
+            { text: 'Bebek Şampuanı', link: '#' },
+            { text: 'Damla, Serum, Sprey', link: '#' },
+            { text: 'Tüm Bebek Bakım... ►', link: '#' }
+          ] 
+        },
+        // Sütun 3: Anne Bakım
+        { 
+          title: 'Anne Bakım', 
+          links: [ 
+            { text: 'Çatlak Kremi', link: '#' },
+            { text: 'Göğüs Pedi ve Koruyucu', link: '#' },
+            { text: 'Göğüs Pompası', link: '#' },
+            { text: 'Tüm Anne Bakım ►', link: '#' }
+          ] 
+        },
+        // Sütun 4: Bebek & Çocuk Banyo
+        { 
+          title: 'Bebek & Çocuk Banyo', 
+          links: [ 
+            { text: 'Banyo Tekstili', link: '#' },
+            { text: 'Bebek Banyo Aksesuarları', link: '#' },
+            { text: 'Bebek Bornoz', link: '#' },
+            { text: 'Bebek Havlu', link: '#' },
+            { text: 'Bebek Küveti', link: '#' },
+            { text: 'Klozet Adaptörü & Lazımlık', link: '#' },
+            { text: 'Tüm Bebek & Çocuk Banyo ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=603', title: 'Anne & Bebek İhtiyaçları', link: '#' }
+      ]
+    },
+
+
+'Bebek & Çocuk Odası': {
+      columns: [
+        // Sütun 1: Ev Tekstili
+        { 
+          title: 'Bebek & Çocuk Ev Tekstili', 
+          links: [ 
+            { text: 'Çocuk Halısı', link: '#' },
+            { text: 'Bebek & Çocuk Battaniyesi', link: '#' },
+            { text: 'Bebek & Çocuk Yastık ve Kılıfı', link: '#' },
+            { text: 'Bebek & Çocuk Yorgan', link: '#' },
+            { text: 'Tüm Bebek & Çocuk Ev Tekstili ►', link: '#' }
+          ] 
+        },
+        // Sütun 2: Ev Dekorasyon
+        { 
+          title: 'Bebek & Çocuk Ev Dekorasyon', 
+          links: [ 
+            { text: 'Çocuk Minderi', link: '#' },
+            { text: 'Çocuk Diğer Dekoratif Aksesuarlar', link: '#' },
+            { text: 'Çocuk Odası Cibinlik', link: '#' },
+            { text: 'Çocuk Odası Duvar Kağıdı', link: '#' },
+            { text: 'Çocuk Odası Duvar Sticker', link: '#' },
+            { text: 'Çocuk Odası Kırlent ve Kılıfı', link: '#' },
+            { text: 'Çocuk Odası Tablo', link: '#' },
+            { text: 'Tüm Bebek & Çocuk Ev... ►', link: '#' }
+          ] 
+        },
+        // Sütun 3: Aydınlatma
+        { 
+          title: 'Bebek & Çocuk Aydınlatma', 
+          links: [ 
+            { text: 'Çocuk Odası Aplik', link: '#' },
+            { text: 'Çocuk Odası Aydınlatma', link: '#' },
+            { text: 'Çocuk Odası Masa Lambası', link: '#' },
+            { text: 'Tüm Bebek & Çocuk Aydınlatma ►', link: '#' }
+          ] 
+        },
+        // Sütun 4: Bebek Odası Mobilyası
+        { 
+          title: 'Bebek Odası Mobilyası', 
+          links: [ 
+            { text: 'Beşik', link: '#' },
+            { text: 'Park Yatak & Oyun Parkı', link: '#' },
+            { text: 'Bebek Yatak', link: '#' },
+            { text: 'Çocuk Dolap', link: '#' },
+            { text: 'Çocuk Kitaplık', link: '#' },
+            { text: 'Tüm Bebek Odası Mobilyası ►', link: '#' }
+          ] 
+        },
+         // Sütun 5: Çocuk & Genç Odası Mobilyası
+        { 
+          title: 'Çocuk & Genç Odası Mobilyası', 
+          links: [ 
+            { text: 'Aktivite Masası & Merkezi', link: '#' },
+            { text: 'Montesorri Çocuk Odası', link: '#' },
+            { text: 'Çocuk Çalışma Sandalyesi', link: '#' },
+            { text: 'Çocuk Komodin & Şifonyer', link: '#' },
+            { text: 'Çocuk Çalışma Odası', link: '#' },
+            { text: 'Oyuncak Dolabı', link: '#' },
+            { text: 'Ranza', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=604', title: 'Çocuk Odası Fikirleri', link: '#' }
+      ]
+    },
+
+    'Portbebe & Kanguru': {
+      columns: [ 
+        { title: '', links: [ {text: 'Portbebe', link:'#'}, {text: 'Kanguru', link:'#'} ] }
+      ],
+      promos: []
+    },
+    'Güvenlik': {
+      columns: [ 
+        { title: '', links: [ {text: 'Kamera & Telsiz', link:'#'}, {text: 'Güvenlik Bariyerleri', link:'#'} ] }
+      ],
+      promos: []
+    },
+
+
+'Çocuk Kitap & Kırtasiye': {
+      columns: [
+        // Sütun 1: Kitap
+        { 
+          title: 'Kitap', 
+          links: [ 
+            { text: 'Çocuk ve Ebeveyn Kitapları', link: '#' },
+            { text: 'Yabancı Dil Kitapları', link: '#' },
+            { text: 'Aile & Çocuk Bakımı', link: '#' },
+            { text: 'Çocuk & Gençlik Kitapları', link: '#' }
+          ] 
+        },
+        // Sütun 2: Kırtasiye
+        { 
+          title: 'Kırtasiye', 
+          links: [ 
+            { text: 'Kalem Kutusu', link: '#' },
+            { text: 'Etiketler', link: '#' },
+            { text: 'Boyama Seti', link: '#' },
+            { text: 'Kırtasiye Seti', link: '#' },
+            { text: 'Boya Malzemeleri', link: '#' },
+            { text: 'Bayrak', link: '#' },
+            { text: 'Cetvel', link: '#' },
+            { text: 'Pano', link: '#' },
+            { text: 'Silgiler', link: '#' },
+            { text: 'Yapıştırıcılar', link: '#' },
+            { text: 'Tüm Kırtasiye ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=605', title: 'Okul Alışverişi', link: '#' }
+      ]
+    },
+
+
+'Öne Çıkan Markalar': {
+      // // 11 markayı 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Cybex', link: '#' },
+            { text: 'Babybjörn', link: '#' },
+            { text: 'Maxi-Cosi', link: '#' },
+            { text: 'Scoot And Ride', link: '#' },
+            { text: 'Mercedes-Benz', link: '#' },
+            { text: 'Peg Perego', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Anex', link: '#' },
+            { text: 'Mamas papas', link: '#' },
+            { text: 'Smoby', link: '#' },
+            { text: 'Globber', link: '#' },
+            { text: 'Doona', link: '#' },
+          ] 
+        }
+      ],
+      promos: [] // Promosyon yok
+    },    // // Eski 'Bebek Giyim' kategorisi yeni listende yok, 
+    // // 'Kız Bebek' ve 'Erkek Bebek' içinde olduğu için kaldırıldı.
+  },
+
+
+'Teknoloji': {
+    // // Yeni sol menü sıralamana göre güncellendi
+
+
+'Küçük Ev Aletleri': {
+      columns: [
+        // Sütun 1: Süpürge
+        { 
+          title: 'Süpürge', 
+          links: [ 
+            { text: 'Robot Süpürge', link: '#' },
+            { text: 'Dik Süpürge', link: '#' },
+            { text: 'Süpürge Aksesuarları', link: '#' },
+            { text: 'Toz Torbalı Süpürge', link: '#' },
+            { text: 'Toz Torbasız Süpürge', link: '#' },
+            { text: 'Tüm Süpürge ►', link: '#' }
+          ] 
+        },
+        // Sütun 2: Kahve Makinesi
+        { 
+          title: 'Kahve Makinesi', 
+          links: [ 
+            { text: 'Espresso & Cappuccino Makinesi', link: '#' },
+            { text: 'Filtre Kahve Makinesi', link: '#' },
+            { text: 'Türk Kahvesi Makinesi', link: '#' },
+            { text: 'Kahve Öğütücü', link: '#' },
+            { text: 'Elektronik Kahve Öğütücü', link: '#' },
+            { text: 'Tüm Kahve Makinesi ►', link: '#' }
+          ] 
+        },
+        // Sütun 3: Ütü ve Diğerleri
+        { 
+          title: 'Ütü', 
+          links: [ 
+            { text: 'Buhar Kazanlı Ütü', link: '#' },
+            { text: 'Buharlı Dikey Ütü', link: '#' },
+            { text: 'Buharlı Ütü', link: '#' },
+            { text: 'Tüm Ütü ►', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Mikser & Mikser Seti', 
+          links: [ { text: 'Tüm Mikser Setleri ►', link: '#' } ]
+        },
+        { 
+          title: 'Blender & Blender Seti', 
+          links: [ { text: 'Tüm Blender Setleri ►', link: '#' } ]
+        },
+        { 
+          title: 'Tost Makinesi', 
+          links: [ { text: 'Tüm Tost Makineleri ►', link: '#' } ]
+        },
+
+        // Sütun 4: Kalanlar
+        { 
+          title: 'Buharlı Temizleyici', 
+          links: [ { text: 'Tüm Temizleyiciler ►', link: '#' } ]
+        },
+        { 
+          title: 'Akıllı Aydınlatma', 
+          links: [ { text: 'Tüm Aydınlatma ►', link: '#' } ]
+        },
+        { 
+          title: 'Meyve & Sebze Sıkacağı', 
+          links: [ { text: 'Tüm Sıkacaklar ►', link: '#' } ]
+        },
+        { 
+          title: 'Su Isıtıcı & Kettle', 
+          links: [ { text: 'Tüm Su Isıtıcıları ►', link: '#' } ]
+        },
+        { 
+          title: 'Doğrayıcı & Rondo', 
+          links: [ { text: 'Tüm Rondolar ►', link: '#' } ]
+        }
+      ],
+      promos: [ 
+        { img: 'https://picsum.photos/200/100?image=701', title: 'Mutfak Aletleri', link: '#' }
+      ]
+    },
+
+
+'Telefon': {
+      columns: [
+        // Sütun 1: Cep Telefonu
+        { 
+          title: 'Cep Telefonu', 
+          links: [ 
+            { text: 'iPhone iOS Cep Telefonları', link: '#' },
+            { text: 'Android Cep Telefonları', link: '#' },
+            { text: 'Tüm Cep Telefonları ►', link: '#' }
+          ] 
+        },
+        // Sütun 2: Telefon Aksesuarları
+        { 
+          title: 'Telefon Aksesuarları', 
+          links: [ 
+            { text: 'Kapak & Kılıf', link: '#' },
+            { text: 'Araç Telefon Tutucu', link: '#' },
+            { text: 'Güç Ürünleri', link: '#' },
+            { text: 'Ekran Koruyucular', link: '#' },
+            { text: 'Airpods Kılıf', link: '#' },
+            { text: 'Tüm Telefon Aksesuarları ►', link: '#' }
+          ] 
+        },
+        // Sütun 3: Kulaklıklar (Tekil)
+        { 
+          title: 'Kulaklıklar', 
+          links: [ 
+             { text: 'Tüm Kulaklıklar ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=703', title: 'Telefon Aksesuarları', link: '#' }
+      ]
+    },
+
+
+'Kişisel Bakım Aletleri': {
+      columns: [
+        // Sütun 1: Başlıksız (Ana Kategoriler 1)
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Saç Kurutma Makinesi', link: '#' },
+            { text: 'Saç Düzleştirici', link: '#' },
+            { text: 'Saç Maşası', link: '#' },
+            { text: 'Tıraş Makinesi', link: '#' },
+          ] 
+        },
+        // Sütun 2: Başlıksız (Ana Kategoriler 2)
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Epilatör', link: '#' },
+            { text: 'IPL Lazer Epilasyon Aleti', link: '#' },
+            { text: 'Kişisel Bakım Yedek Parça', link: '#' }
+          ] 
+        },
+        // Sütun 3: Başlıklı (Sağlık)
+        { 
+          title: 'Sağlık', 
+          links: [ 
+            { text: 'Genel Sağlık', link: '#' },
+            { text: 'Masaj Aletleri', link: '#' },
+            { text: 'Masaj Tabancası', link: '#' },
+            { text: 'Masaj Topu', link: '#' },
+            { text: 'Masaj Yağı', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=702', title: 'Dyson Keşfet', link: '#' }
+      ]
+    },
+
+
+'TV, Görüntü & Ses Sistemleri': {
+      columns: [
+        // Sütun 1: Başlıksız (Tekil Linkler)
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Televizyon', link: '#' },
+            { text: 'Ev Sinema Hoparlörü', link: '#' },
+            { text: 'Projeksiyon Cihazı', link: '#' }
+          ] 
+        },
+        // Sütun 2: Başlıklı (Aksesuarlar)
+        { 
+          title: 'TV & Ses & Konsol Aksesuarları', 
+          links: [ 
+            { text: 'Ses Sistemleri', link: '#' },
+            { text: 'Hoparlörler', link: '#' },
+            { text: 'Görüntü ve Ses Kabloları', link: '#' },
+            { text: 'TV Aksesuarları', link: '#' },
+            { text: 'Tüm TV & Ses & Konsol Aks... ►', link: '#' }
+          ] 
+        },
+        // Sütun 3: Başlıklı (Ev Sinema Sistemi)
+        { 
+          title: 'Ev Sinema Sistemi', 
+          links: [ 
+            { text: 'Ev Tipi Subwoofer', link: '#' },
+            { text: 'Media Player', link: '#' },
+            { text: 'Receiver Amfi', link: '#' },
+            { text: 'Sinema Sistemi', link: '#' },
+            { text: 'Soundbar', link: '#' },
+            { text: 'Stereo Amfier', link: '#' },
+            { text: 'Tüm Ev Sinema Sistemi ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=704', title: 'Yeni Nesil TV\'ler', link: '#' }
+      ]
+    },
+
+'Beyaz Eşya': {
+      columns: [
+        // Sütun 1: Başlıksız (Ana Cihazlar 1)
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Buzdolabı', link: '#' },
+            { text: 'Çamaşır Makinesi', link: '#' },
+            { text: 'Bulaşık Makinesi', link: '#' },
+            { text: 'Fırın', link: '#' },
+            { text: 'Kurutma Makinesi', link: '#' },
+          ] 
+        },
+        // Sütun 2: Başlıksız (Ana Cihazlar 2)
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Hava Nemlendirici', link: '#' },
+            { text: 'Hava Temizleyici', link: '#' },
+            { text: 'Şarap Dolabı', link: '#' },
+            { text: 'Davlumbazlar', link: '#' },
+            { text: 'Derin Dondurucu', link: '#' },
+          ] 
+        },
+        // Sütun 3: Başlıklı (İklimlendirme)
+        { 
+          title: 'Klima & Isıtıcı', 
+          links: [ 
+            { text: 'Klima', link: '#' },
+            { text: 'Isıtıcı', link: '#' },
+            { text: 'Portatif Soğutucu', link: '#' },
+            { text: 'Vantilatör', link: '#' },
+            { text: 'Tüm Klima & Isıtıcı ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=705', title: 'Beyaz Eşya Setleri', link: '#' }
+      ]
+    },
+
+'Bilgisayar & Tablet': {
+      columns: [
+        // Sütun 1: Başlıksız (Ana Cihazlar)
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Laptop', link: '#' },
+            { text: 'Masaüstü Bilgisayar', link: '#' },
+            { text: 'Tablet', link: '#' },
+            { text: 'Monitör', link: '#' },
+            { text: 'Monitör PC - All in One', link: '#' },
+            { text: 'Kablo & Adaptör', link: '#' },
+            { text: 'Monitör Aksesuarları', link: '#' }
+          ] 
+        },
+        // Sütun 2: Oyuncu Bilgisayarları
+        { 
+          title: 'Oyuncu Bilgisayarları', 
+          links: [ 
+            { text: 'Oyuncu Laptopları', link: '#' },
+            { text: 'Oyuncu Monitör', link: '#' },
+            { text: 'Tüm Oyuncu Bilgisayarları ►', link: '#' }
+          ] 
+        },
+        // Sütun 3: Aksesuarlar
+        { 
+          title: 'Bilgisayar & Tablet Aksesuarları', 
+          links: [ 
+            { text: 'Ağ - Modem', link: '#' },
+            { text: 'Akıllı Ev Sistemleri', link: '#' },
+            { text: 'Çanta & Kılıflar', link: '#' },
+            { text: 'Çevre Birimleri', link: '#' },
+            { text: 'Kablo & Sarf Malzemeler', link: '#' },
+            { text: 'Oyuncu Ekipmanları', link: '#' },
+            { text: 'Veri Depolama', link: '#' },
+            { text: 'Tüm Bilgisayar... Aksesuarları ►', link: '#' }
+          ] 
+        },
+        // Sütun 4: Bileşenler
+        { 
+          title: 'Bilgisayar Bileşenleri', 
+          links: [ 
+            { text: 'Anakart', link: '#' },
+            { text: 'Bilgisayar Kasası', link: '#' },
+            { text: 'Ekran Kartı', link: '#' },
+            { text: 'RAM', link: '#' },
+            { text: 'Tüm Bilgisayar Bileşenleri ►', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=706', title: 'Oyuncu Ekipmanları', link: '#' }
+      ]
+    },
+
+'Oyun Konsolları': {
+      columns: [
+        // Sütun 1: Başlıksız
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Playstation Konsol', link: '#' },
+            { text: 'Xbox Konsolları', link: '#' },
+            { text: 'Playstation Oyunları', link: '#' },
+            { text: 'Diğer Oyun Konsolları', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=707', title: 'En Popüler Oyunlar', link: '#' }
+      ]
+    },
+
+'Fotoğraf Makinesi & Kamera': {
+      columns: [
+        // Sütun 1: Başlıksız (Ana Cihazlar)
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Şipşak Fotoğraf Makinesi', link: '#' },
+            { text: 'Dijital Fotoğraf Makinesi', link: '#' },
+            { text: 'Video Kamera', link: '#' },
+            { text: 'Aksiyon Kamerası', link: '#' },
+            { text: 'Aynasız Kompakt SLR Makinesi', link: '#' },
+            { text: 'Sualtı Fotoğraf Makinesi', link: '#' },
+            { text: 'Drone', link: '#' }
+          ] 
+        },
+        // Sütun 2: Başlıklı (Aksesuarlar)
+        { 
+          title: 'Foto & Kamera Aksesuarları', 
+          links: [ 
+            { text: 'Drone Aksesuarları', link: '#' },
+            { text: 'Tüm Aksesuarlar ►', link: '#' } // // Bir "Tüm" linki ekledim
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=708', title: 'Aksiyon Kameraları', link: '#' }
+      ]
+    },
+
+
+'Giyilebilir Teknoloji': {
+      columns: [
+        // Sütun 1: Başlıksız
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Akıllı Saat', link: '#' },
+            { text: 'Akıllı Bileklik', link: '#' },
+            { text: 'Sanal Gerçeklik Gözlüğü - VR', link: '#' },
+            { text: 'Akıllı Çocuk Saati', link: '#' },
+            { text: 'Akıllı Saat Kordon', link: '#' },
+            { text: 'Akıllı Saat Aksesuarları', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=709', title: 'Akıllı Saatler', link: '#' }
+      ]
+    },
+    
+    
+
+    'Yazıcı & Tarayıcı': {
+      columns: [ 
+        { title: '', links: [ {text: 'Lazer Yazıcı', link:'#'}, {text: 'Tarayıcı', link:'#'} ] }
+      ],
+      promos: []
+    },
+
+    
+'Öne Çıkan Markalar': {
+      // // 11 markayı 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Sony', link: '#' },
+            { text: 'Dyson', link: '#' },
+            { text: 'Apple', link: '#' },
+            { text: 'Philips', link: '#' },
+            { text: 'Smeg', link: '#' },
+            { text: 'Braun', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Kitchenaid', link: '#' },
+            { text: 'Sage', link: '#' },
+            { text: 'Fujifilm', link: '#' },
+            { text: 'Lenovo', link: '#' },
+            { text: 'Garmin', link: '#' },
+          ] 
+        }
+      ],
+      promos: [] // Promosyon yok
+    },
+  },
+
+
+
+'Spor & Outdoor': {
+    // // Yeni sol menü sıralamana göre güncellendi
+
+
+'Kamp & Outdoor': {
+      // // 11 linki 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Çadır', link: '#' },
+            { text: 'Çadır Uyku Tulumu', link: '#' },
+            { text: 'Termos', link: '#' },
+            { text: 'Çakı & Bıçak', link: '#' },
+            { text: 'Dürbün', link: '#' },
+            { text: 'Kamp Sandalyesi', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Kamp Masa & Sandalye Seti', link: '#' },
+            { text: 'Outdoor Çanta & Aksesuar', link: '#' },
+            { text: 'Kamp Mutfağı', link: '#' },
+            { text: 'Outdoor Ayakkabı', link: '#' },
+            { text: 'Outdoor Giyim', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=801', title: 'Outdoor Ekipmanları', link: '#' }
+      ]
+    },
+
+'Fitness & Kondisyon': {
+      // // 11 linki 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Koşu Bantları', link: '#' },
+            { text: 'Kondisyon Bisikletleri', link: '#' },
+            { text: 'Ağırlık Eldiveni', link: '#' },
+            { text: 'Ağırlık Kemeri', link: '#' },
+            { text: 'Ağırlık Sehpaları', link: '#' },
+            { text: 'Çalışma İstasyonları', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Dambıllar ve Ağırlık Plakaları', link: '#' },
+            { text: 'Egzersiz Aletleri', link: '#' },
+            { text: 'Egzersiz Bandı', link: '#' },
+            { text: 'El ve Ayak Ağırlıkları', link: '#' },
+            { text: 'Kondisyon Küre', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=802', title: 'Fitness Ekipmanları', link: '#' }
+      ]
+    },
+
+
+'Ekipman & Aksesuar': {
+      columns: [
+        // Sütun 1: Basketbol, Futbol
+        { 
+          title: 'Basketbol', 
+          links: [ 
+            { text: 'Basketbol Malzemeleri', link: '#' },
+            { text: 'Basketbol Potası', link: '#' },
+            { text: 'Basketbol Topu', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Futbol', 
+          links: [ 
+            { text: 'Amerikan Futbolu Topu', link: '#' },
+            { text: 'Antreman Malzemeleri', link: '#' },
+            { text: 'Futbol Topu', link: '#' }
+          ] 
+        },
+
+        // Sütun 2: Golf, Av & Balıkçılık
+        { 
+          title: 'Golf Malzemeleri', 
+          links: [ 
+            { text: 'Golf Çantası', link: '#' },
+            { text: 'Golf Eldiveni', link: '#' },
+            { text: 'Golf Sopası', link: '#' },
+            { text: 'Golf Topu', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Av & Balıkçılık', 
+          links: [ 
+            { text: 'Balıkçılık Aksesuarları', link: '#' },
+            { text: 'Olta Kamışı', link: '#' },
+            { text: 'Olta Makinesi', link: '#' },
+            { text: 'Suni Yem', link: '#' }
+          ] 
+        },
+
+        // Sütun 3: Dalış Ürünleri
+        { 
+          title: 'Dalış Ürünleri', 
+          links: [ 
+            { text: 'Dalış Bıçağı', link: '#' },
+            { text: 'Dalış Bilgisayarı', link: '#' },
+            { text: 'Dalış Çantası', link: '#' },
+            { text: 'Dalış Elbisesi', link: '#' },
+            { text: 'Dalış Eldiveni', link: '#' },
+            { text: 'Dalış Feneri', link: '#' },
+            { text: 'Dalış Maskesi', link: '#' },
+            { text: 'Dalış Regülatörü', link: '#' },
+            { text: 'Denge Yeleği', link: '#' },
+            { text: 'Maske & Şnorkel', link: '#' },
+            { text: 'Palet & Patik', link: '#' }
+          ] 
+        },
+
+        // Sütun 4: Kalanlar
+        { 
+          title: 'Tırmanış', 
+          links: [ 
+            { text: 'Baton', link: '#' },
+            { text: 'Emniyet Malzemeleri', link: '#' }
+          ] 
+        },
+        { 
+          title: 'Voleybol', 
+          links: [ 
+            { text: 'Voleybol Topu', link: '#' }
+          ] 
+        },
+        { 
+          title: '', // Başlıksız
+          links: [ 
+            { text: 'Dart', link: '#' },
+            { text: 'Okçuluk Sporu', link: '#' },
+            { text: 'Yaylar', link: '#' },
+            { text: 'Spor Matara', link: '#' },
+            { text: 'Zıplayan Ayakkabı', link: '#' }
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=803', title: 'Spor Ekipmanları', link: '#' }
+      ]
+    },
+
+
+'Su Sporu': {
+      // // 10 linki 2 sütuna böldük (5+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Jetski', link: '#' },
+            { text: 'Sörf', link: '#' },
+            { text: 'Can Yelekleri', link: '#' },
+            { text: 'Deniz Gözlüğü', link: '#' },
+            { text: 'Kano & Rafting', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Su Sporu Malzemeleri', link: '#' },
+            { text: 'Su Ürünleri Seti', link: '#' },
+            { text: 'Yüzücü Mayoları', link: '#' },
+            { text: 'Yüzücü Gözlüğü & Boneler', link: '#' },
+            { text: 'Yelken Giyim & Aksesuar', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=804', title: 'Su Sporu Ekipmanları', link: '#' }
+      ]
+    },
+
+
+'Pilates & Yoga': {
+      // // 11 linki 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Pilates Topu', link: '#' },
+            { text: 'Pilates Minder & Mat', link: '#' },
+            { text: 'Pilates Çemberi', link: '#' },
+            { text: 'Direnç Lastiği', link: '#' },
+            { text: 'Bosu Topu', link: '#' },
+            { text: 'Pilates Ekipmanları', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Yoga Çorabı', link: '#' },
+            { text: 'Mat Çantası', link: '#' },
+            { text: 'Yoga Blok', link: '#' },
+            { text: 'Yoga Ekipmanları', link: '#' },
+            { text: 'Yoga Göz Bandı', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=805', title: 'Yoga & Pilates', link: '#' }
+      ]
+    },
+
+
+'Tenis': {
+      // // 7 linki 2 sütuna böldük (4+3)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Tenis Raketi', link: '#' },
+            { text: 'Tenis Çantası', link: '#' },
+            { text: 'Tenis Malzemeleri', link: '#' },
+            { text: 'Masa Tenisi Masası', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Masa Tenisi Raketi', link: '#' },
+            { text: 'Tenis Giyim', link: '#' },
+            { text: 'Tenis Ayakkabı & Çanta', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=806', title: 'Tenis Ekipmanları', link: '#' }
+      ]
+    },
+
+
+'Paten & Kaykay & Scooter': {
+      columns: [
+        // // 6 linki tek sütuna topladık
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Scooter', link: '#' },
+            { text: 'Elektrikli Scooter', link: '#' },
+            { text: 'Hoverboard', link: '#' },
+            { text: 'Kaykay', link: '#' },
+            { text: 'Paten', link: '#' },
+            { text: 'Buz Pateni', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=807', title: 'Paten & Scooter', link: '#' }
+      ]
+    },
+
+'Bisiklet': {
+      // // 7 linki 2 sütuna böldük (4+3)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Bisiklet', link: '#' },
+            { text: 'Elektrikli Bisiklet', link: '#' },
+            { text: 'Bisiklet Kaskı', link: '#' },
+            { text: 'Bisiklet Gözlüğü', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Bisiklet Ayakkabı', link: '#' },
+            { text: 'Bisiklet Giyim', link: '#' },
+            { text: 'Matara & Aksesuarlar', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=808', title: 'Bisiklet Ekipmanları', link: '#' }
+      ]
+    },
+
+
+
+'Kayak & Snowboard': {
+      // // 11 linki 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Kayak Ekipmanları', link: '#' },
+            { text: 'Kayak Gözlüğü', link: '#' },
+            { text: 'Kayak Kaskı', link: '#' },
+            { text: 'Kayak Eldiveni', link: '#' },
+            { text: 'Kayak Batonu', link: '#' },
+            { text: 'Snowboard', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Snowboard Bağlamaları', link: '#' },
+            { text: 'Kayak Takımı', link: '#' },
+            { text: 'Snowboard & Kayak Pantolonu', link: '#' },
+            { text: 'Snowboard & Kayak Botu', link: '#' },
+            { text: 'Snowboard & Kayak Montu', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=809', title: 'Kayak Sezonu Açıldı', link: '#' }
+      ]
+    },
+
+
+'Otomotiv & Motosiklet': {
+      columns: [
+        // Sütun 1: Başlıksız (Ana Kategoriler)
+        { 
+          title: 'Otomobil', // Başlık yok
+          links: [ 
+            { text: 'Otomobil', link: '#' },
+            { text: 'Elektrikli Araba', link: '#' },
+            { text: 'Motosiklet', link: '#' },
+            { text: 'Boyunluk', link: '#' },
+          ] 
+        },
+        // Sütun 2: Başlıklı (Ekipman & Aksesuar)
+        { 
+          title: 'Ekipman & Aksesuar', 
+          links: [ 
+            { text: 'Elektrikli Scooter & Motosiklet', link: '#' },
+            { text: 'Motosiklet Ayakkabı', link: '#' },
+            { text: 'Motosiklet Eldiveni', link: '#' },
+            { text: 'Motosiklet Kask', link: '#' },
+            { text: 'Motosiklet Montu', link: '#' },
+            { text: 'Motosiklet Pantolonu', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=810', title: 'Motosiklet Ekipmanları', link: '#' }
+      ]
+    },
+
+'Öne Çıkan Markalar': {
+      // // 11 markayı 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Helly Hansen', link: '#' },
+            { text: 'Wilson', link: '#' },
+            { text: 'Horizon Fitness', link: '#' },
+            { text: 'Port Pilates', link: '#' },
+            { text: 'Bianchi', link: '#' },
+            { text: 'Naturehike', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [
+            { text: 'Outwell', link: '#' },
+            { text: 'Bowflex', link: '#' },
+            { text: 'Bogner Fire & Ice', link: '#' },
+            { text: 'Spalding', link: '#' },
+            { text: 'Sublue', link: '#' },
+          ] 
+        }
+      ],
+      promos: [] // Promosyon yok
+    },
+    
+    // // Eski 'Spor Giyim' kategorisi yeni listende yok,
+    // // 'Kamp & Outdoor' ve diğerlerinin içine dağıtıldığı için kaldırıldı.
+  },
+
+
+'Outlet': {
+    // // Yeni sol menü sıralamana göre güncellendi
+
+
+'Giyim': {
+      // // 11 linki 2 sütuna böldük (6+5)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'T-Shirt', link: '#' },
+            { text: 'Sweatshirt', link: '#' },
+            { text: 'Gömlek & Bluz', link: '#' },
+            { text: 'Elbise & Tulum', link: '#' },
+            { text: 'Ceket', link: '#' },
+            { text: 'Jean Pantolon', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Pantolon', link: '#' },
+            { text: 'Etek', link: '#' },
+            { text: 'Eşofman', link: '#' },
+            { text: 'Bermuda & Şort', link: '#' },
+            { text: 'Plaj Giyim', link: '#' }, // "Plaj Gi" düzeltildi
+            { text: 'Jean Pantolon', link: '#' }, // "Plaj Gi" düzeltildi
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=901', title: 'Giyim Outlet Fırsatları', link: '#' }
+      ]
+    },
+
+
+'Ayakkabı': {
+      // // 8 linki 2 sütuna böldük (4+4)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Sneaker', link: '#' },
+            { text: 'Günlük Ayakkabı', link: '#' },
+            { text: 'Topuklu Ayakkabı', link: '#' },
+            { text: 'Gece Ayakkabısı', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Terlik', link: '#' },
+            { text: 'Babet', link: '#' },
+            { text: 'Sandalet', link: '#' },
+            { text: 'Espadril', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=902', title: 'Ayakkabı Outlet Fırsatları', link: '#' }
+      ]
+    },
+
+
+'Çanta': {
+      columns: [
+        // // 6 linki tek sütuna topladık
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Omuz Çantası', link: '#' },
+            { text: 'El Çantası', link: '#' },
+            { text: 'Sırt Çantası', link: '#' },
+            { text: 'Bel Çantası', link: '#' },
+            { text: 'Abiye Çanta', link: '#' },
+            { text: 'Bavul', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=903', title: 'Çanta Outlet Fırsatları', link: '#' }
+      ]
+    },
+
+'Aksesuar': {
+      // // 7 linki 2 sütuna böldük (4+3)
+      columns: [
+        // Sütun 1
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Cüzdan & Kartlık', link: '#' },
+            { text: 'Takı', link: '#' },
+            { text: 'Eşarp & Fular & Şal', link: '#' },
+            { text: 'Kemer', link: '#' },
+          ] 
+        },
+        // Sütun 2
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Kravat & Poşet Mendil', link: '#' },
+            { text: 'Şapka', link: '#' },
+            { text: 'Güneş Gözlüğü', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=904', title: 'Aksesuar Outlet Fırsatları', link: '#' }
+      ]
+    },
+
+
+'Ev': {
+      columns: [
+        // // 4 linki tek sütuna topladık
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Sofra Grubu', link: '#' },
+            { text: 'Ev Dekorasyonu', link: '#' },
+            { text: 'Banyo', link: '#' },
+            { text: 'Ev Tekstili', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=905', title: 'Ev Outlet Fırsatları', link: '#' }
+      ]
+    },
+
+'Çocuk': {
+      columns: [
+        // // 5 linki tek sütuna topladık
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Set&Takım', link: '#' },
+            { text: 'Kız Çocuk', link: '#' },
+            { text: 'Erkek Çocuk', link: '#' },
+            { text: 'Bebek', link: '#' },
+            { text: 'Ayakkabı & Çanta', link: '#' },
+          ] 
+        }
+      ],
+      promos: [ // Promosyon ekleyelim
+        { img: 'https://picsum.photos/200/100?image=906', title: 'Çocuk Outlet Fırsatları', link: '#' }
+      ]
+    },
+
+  },
+
+
+'Reborn': {
+    // // Yeni sol menü sıralamana göre güncellendi
+
+'Reborn Çanta': {
+      columns: [
+        // // 3 linki tek sütuna topladık
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Reborn El Portföyü', link: '#' },
+            { text: 'Reborn Omuz Çantası', link: '#' },
+            { text: 'Reborn Askılı/Çapraz Çanta', link: '#' },
+            { text: 'Tüm Reborn Çantalar ►', link: '#' } // // Bir "Tüm" linki ekledim
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=950', title: 'Vintage Çantalar', link: '#' }
+      ]
+    },
+
+
+'Reborn Ayakkabı': {
+      columns: [
+        // // 5 linki tek sütuna topladık
+        { 
+          title: '', // Başlık yok
+          links: [ 
+            { text: 'Reborn Topuklu Ayakkabı', link: '#' },
+            { text: 'Reborn Babet', link: '#' },
+            { text: 'Reborn Loafer', link: '#' },
+            { text: 'Reborn Gece Ayakkabısı', link: '#' },
+            { text: 'Reborn Terlik', link: '#' },
+            { text: 'Tüm Reborn Ayakkabılar ►', link: '#' } // // Bir "Tüm" linki ekledim
+          ] 
+        }
+      ],
+      promos: [ // Promosyonları koruyoruz
+        { img: 'https://picsum.photos/200/100?image=951', title: 'Vintage Ayakkabılar', link: '#' }
+      ]
+    },
+
+
+    'Reborn Başvuru': {
+      columns: [ 
+        { title: 'Nasıl Çalışır?', links: [ {text: 'Başvuru Formu', link:'#'}, {text: 'Süreç Hakkında', link:'#'} ] }
+      ],
+      promos: []
+    },
+
+    
+    'Repair': {
+      columns: [ 
+        { title: 'Bakım & Onarım', links: [ {text: 'Çanta Bakımı', link:'#'}, {text: 'Ayakkabı Bakımı', link:'#'} ] }
+      ],
+      promos: []
+    },
+  },
+
 });
 
 // --- MEGA MENÜ STATE VE LOGIC (Değişiklik yok) ---
