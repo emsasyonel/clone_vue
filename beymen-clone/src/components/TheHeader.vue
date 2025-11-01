@@ -16,10 +16,10 @@
 
     <BContainer fluid class="main-bar py-4 d-flex align-items-center justify-content-between" style="padding-left: 50px; padding-right: 50px;">
 
-      <BNavbarBrand :to="{ name: 'Home' }" class="text-dark logo-text" style="flex-shrink: 0; padding-left: 50px;">
-        BEYMEN <span class="dot">.COM</span>
-      </BNavbarBrand>
-
+      <BNavbarBrand :to="{ name: 'Home' }" class="text-dark logo-text" style="flex-shrink: 0; padding-left: 100px;">
+        LUSVİON <span class="dot"></span>
+      </BNavbarBrand>   
+      
       <div class="search-placeholder w-100 mx-4 d-none d-lg-block">
         <div class="search-input-group">
           <div class="placeholder-text">Ürün, Marka Arayın...</div>
@@ -2858,16 +2858,14 @@ hr {
     color: #000 !important;
 }
 .logo-text {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    letter-spacing: 2px;
-    font-size: 1.5rem;
+    letter-spacing: 8px;
+    font-size: 1.75rem;
     text-decoration: none;
     white-space: nowrap;
 }
-.logo-text .dot {
-    color: #40579e;
-    font-weight: 700;
-}
+
 .icon-group .icon-item {
     margin-left: 1.5rem;
     padding: 0 !important;

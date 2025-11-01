@@ -95,7 +95,7 @@
           
           <div class="col-lg-3 col-md-6 mb-4 footer-contact">
             <div class="footer-logo mb-3">
-              <span class="logo-text">BEYMEN <span class="dot">.COM</span></span>
+              <span class="logo-text">LUSVİON <span class="dot"></span></span>
             </div>
             
             <div class="footer-social mb-4">
@@ -199,10 +199,12 @@
   text-decoration: underline;
 }
 .logo-text {
-  font-weight: 300; 
-  letter-spacing: 2px;
-  font-size: 1.5rem;
-  color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 8px;
+    font-size: 1.75rem;
+    text-decoration: none;
+    white-space: nowrap;
 }
 .logo-text .dot {
   color: #40579e;
